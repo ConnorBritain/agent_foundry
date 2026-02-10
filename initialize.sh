@@ -229,7 +229,7 @@ launch_orchestrator() {
 
     # Launch Claude Code with the Orchestrator prompt
     cd "$PROJECT_DIR"
-    claude --print "You are the Sforza Orchestrator. Read $FOUNDRY_ROOT/ORCHESTRATOR.md for your full system prompt and instructions. The project workspace is at: $PROJECT_DIR. The foundry root (with all team templates) is at: $FOUNDRY_ROOT. Begin the initialization interview now." 2>/dev/null || {
+    claude --print "You are the Sforza Orchestrator. Read $FOUNDRY_ROOT/ORCHESTRATOR.md for your full system prompt and instructions. The project workspace is at: $PROJECT_DIR. The Sforza root (with all team templates) is at: $FOUNDRY_ROOT. Begin the initialization interview now." 2>/dev/null || {
         warn "Could not auto-launch Claude Code."
         echo ""
         echo "  Launch manually:"

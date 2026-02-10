@@ -272,7 +272,7 @@ This is a lighter-weight alternative that works entirely in the browser.
 ```
 ┌──────────────────────────────────────────────────────┐
 │  Web App: React (hosted on Vercel)                   │
-│  URL: app.agentfoundry.ai                            │
+│  URL: app.sforza.ai                            │
 │  ───────────────────────────────────────────────────│
 │  • Dashboard UI                                       │
 │  • Real-time updates via WebSocket                   │
@@ -329,7 +329,7 @@ This is the most user-friendly option but requires significant infrastructure.
 ```
 ┌──────────────────────────────────────────────────────┐
 │  Web Dashboard: Next.js (Vercel)                     │
-│  URL: app.agentfoundry.ai                            │
+│  URL: app.sforza.ai                            │
 │  ───────────────────────────────────────────────────│
 │  • User authentication (email/password)              │
 │  • Project dashboard                                  │
@@ -479,7 +479,7 @@ brew install sforza
 ==> Application installed to /Applications/Sforza.app
 ✓ Sforza installed successfully!
 
-# Or, Sarah visits agentfoundry.ai/download
+# Or, Sarah visits sforza.ai/download
 # Clicks "Download for Mac"
 # Double-clicks Sforza.dmg
 # Drags app to Applications folder

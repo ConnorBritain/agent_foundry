@@ -219,7 +219,7 @@ Key files to study:
 1. Project scaffolding (pyproject.toml, src layout, basic tests)
 2. `config.py` — Settings from env vars / config file (ANTHROPIC_API_KEY, FOUNDRY_ROOT, DB_PATH, etc.)
 3. `state/database.py` + `state/models.py` — SQLite schema: projects, teams, agents, messages, decisions, cost_entries
-4. `agents/prompt_loader.py` — Load AGENTS.md from foundry templates, inject charter context
+4. `agents/prompt_loader.py` — Load AGENTS.md from Sforza templates, inject charter context
 5. `agents/session.py` — Single agent conversation wrapper (send/receive with Anthropic API, persist to SQLite)
 6. `agents/manager.py` — Spawn, monitor, and manage multiple concurrent sessions
 7. `cost/tracker.py` + `cost/pricing.py` — Token counting and cost tracking per session
