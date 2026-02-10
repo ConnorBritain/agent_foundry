@@ -1,0 +1,113 @@
+{
+  "name": "arxiv",
+  "description": "arXiv API for academic paper search, pre-print discovery, and citation metadata retrieval",
+  "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/arxiv",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-arxiv"],
+    "env": {
+      "ARXIV_API_KEY": "${ARXIV_API_KEY}"
+    }
+  },
+  "transport": {
+    "type": "http",
+    "url": "http://export.arxiv.org/api",
+    "headers": {
+      "Accept": "application/atom+xml"
+    }
+  },
+  "auth": {
+    "type": "none",
+    "note": "arXiv API is freely accessible. Optional API key for higher rate limits.",
+    "optional_key": "${ARXIV_API_KEY}"
+  },
+  "capabilities": {
+    "search": {
+      "by_title": true,
+      "by_author": true,
+      "by_abstract": true,
+      "by_category": true,
+      "by_id": true,
+      "boolean_operators": true,
+      "date_range_filter": true,
+      "max_results_per_query": 100
+    },
+    "metadata": {
+      "title": true,
+      "authors": true,
+      "abstract": true,
+      "categories": true,
+      "doi": true,
+      "journal_ref": true,
+      "published_date": true,
+      "updated_date": true,
+      "comment": true
+    },
+    "access": {
+      "pdf_link": true,
+      "html_link": true,
+      "source_link": true
+    }
+  },
+  "tools": [
+    {
+      "name": "arxiv_search",
+      "description": "Search arXiv for academic papers by keyword, author, or category",
+      "parameters": {
+        "search_query": "Search query using arXiv query syntax (e.g., 'all:machine learning AND cat:cs.AI')",
+        "max_results": "Maximum number of results to return (default: 10, max: 100)",
+        "sort_by": "Sort order: relevance, lastUpdatedDate, submittedDate",
+        "sort_order": "Sort direction: ascending, descending",
+        "start": "Pagination offset for result sets"
+      }
+    },
+    {
+      "name": "arxiv_get_paper",
+      "description": "Retrieve full metadata for a specific arXiv paper by ID",
+      "parameters": {
+        "paper_id": "arXiv paper ID (e.g., 2301.07041)"
+      }
+    },
+    {
+      "name": "arxiv_search_by_category",
+      "description": "Search papers within a specific arXiv category with date filtering",
+      "parameters": {
+        "category": "arXiv category (e.g., cs.AI, cs.CL, stat.ML, cs.MA, q-bio.BM)",
+        "date_from": "Start date filter (YYYYMMDD)",
+        "date_to": "End date filter (YYYYMMDD)",
+        "max_results": "Maximum results to return"
+      }
+    },
+    {
+      "name": "arxiv_get_references",
+      "description": "Retrieve the reference list for a specific paper for citation chain analysis",
+      "parameters": {
+        "paper_id": "arXiv paper ID"
+      }
+    }
+  ],
+  "rate_limits": {
+    "unauthenticated": {
+      "requests_per_3_seconds": 1,
+      "note": "1 request per 3 seconds per arXiv terms of service"
+    },
+    "authenticated": {
+      "requests_per_second": 1,
+      "note": "Higher limits with registered API key"
+    }
+  },
+  "use_cases": [
+    "Academic literature discovery for systematic reviews and meta-analyses",
+    "Pre-print search for cutting-edge research not yet peer-reviewed",
+    "Citation chain analysis: finding foundational and related works",
+    "Technology research: AI/ML papers, computer science, quantitative methods",
+    "Cross-disciplinary research spanning multiple arXiv categories",
+    "Author-based search to find all publications by key researchers"
+  ],
+  "team_integration": "The Source Analyst uses arXiv in academic and technology research modes to discover peer-reviewed and pre-print papers. Search typically involves keyword queries across relevant categories (cs.AI, cs.CL, cs.MA, stat.ML, etc.) followed by citation chain analysis using get_references. The Source Analyst evaluates each paper's methodology, sample size, and peer review status as part of credibility assessment. Results are documented with full metadata including DOI, authors, abstract, and submission date.",
+  "used_by": ["source-analyst"],
+  "required_env_vars": [],
+  "optional_env_vars": ["ARXIV_API_KEY"],
+  "optional": true,
+  "notes": "arXiv MCP server is optional but strongly recommended for academic and technology research modes. The API is freely accessible without authentication. Rate limiting is handled automatically by the MCP server. For research involving healthcare, biology, or medical topics, supplement with PubMed (configured at platform level). The arXiv database contains over 2 million papers across physics, mathematics, computer science, biology, finance, and statistics."
+}

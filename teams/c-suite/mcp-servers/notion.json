@@ -1,0 +1,67 @@
+{
+  "name": "notion",
+  "description": "Notion integration for business planning documentation, operational playbooks, compliance tracking, and team knowledge management. Enables agents to create structured pages, databases, and linked views in a shared workspace.",
+  "repository": "https://github.com/anthropics/mcp-notion",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@anthropic/mcp-notion"],
+    "env": {
+      "NOTION_API_KEY": "${NOTION_API_KEY}",
+      "NOTION_WORKSPACE_ID": "${NOTION_WORKSPACE_ID}"
+    }
+  },
+  "use_cases": [
+    "Executive summary and integrated business plan narrative",
+    "Go-to-market plan with channel strategy and marketing calendar",
+    "Sales playbook with ICP definition, objection handling, and outreach templates",
+    "Compliance checklist and calendar with status tracking and deadlines",
+    "Customer persona documents with behavioral data and buying process",
+    "Org chart descriptions with role definitions and 90-day mandates",
+    "Process maps for key business workflows (onboarding, support, hiring)",
+    "Content calendar with topics, channels, and publication schedule",
+    "Campaign briefs with objectives, targeting, and success metrics",
+    "Risk register with probability, impact, and mitigation tracking",
+    "Contract template requirements with priority ranking and key terms",
+    "IP strategy documentation with protection timeline and costs",
+    "Competitive landscape analysis with feature comparison matrix",
+    "Board meeting minutes and decision log"
+  ],
+  "team_integration": "Notion serves as the primary output destination for all narrative and structured documents produced by the C-Suite Team. During Phase 6 artifact generation, each specialist creates their domain-specific pages within a shared workspace organized by function. The CEO creates the top-level business plan structure and executive summary. All cross-references between documents use Notion page links for navigation. The workspace becomes the living operating manual for the business.",
+  "workspace_structure": {
+    "root_page": "Business Plan: [Company Name]",
+    "sections": {
+      "executive_summary": "CEO -- 1-page business overview and strategic priorities",
+      "market_analysis": "CMO -- TAM/SAM/SOM, competitive landscape, customer personas",
+      "product_strategy": "CTO -- MVP specification, roadmap overview, tech stack",
+      "go_to_market": "CMO + VP Sales -- channel strategy, positioning, sales process",
+      "sales_playbook": "VP Sales -- ICP, pipeline model, pricing, objection handling",
+      "financial_overview": "CFO -- key metrics summary with links to Google Sheets model",
+      "operations": "COO -- org chart, hiring plan, process maps, vendor assessment",
+      "legal_compliance": "General Counsel -- entity, compliance, contracts, IP, risk register",
+      "pitch_materials": "CEO -- pitch deck content, investor FAQ, key metrics",
+      "appendices": "All -- supporting research, data sources, methodology notes"
+    }
+  },
+  "database_templates": {
+    "compliance_tracker": {
+      "properties": ["Requirement", "Category", "Status", "Deadline", "Owner", "Notes"],
+      "views": ["By status", "By deadline", "By category"]
+    },
+    "hiring_tracker": {
+      "properties": ["Role", "Department", "Priority", "Target Quarter", "Status", "Salary Band"],
+      "views": ["By priority", "By department", "By quarter"]
+    },
+    "risk_register": {
+      "properties": ["Risk", "Category", "Probability", "Impact", "Mitigation", "Owner", "Status"],
+      "views": ["By impact", "By category", "Open risks"]
+    },
+    "content_calendar": {
+      "properties": ["Title", "Type", "Channel", "Persona", "Status", "Publish Date", "Author"],
+      "views": ["By month", "By channel", "By status"]
+    }
+  },
+  "permissions": {
+    "read": ["All agents throughout all phases"],
+    "write": ["Each agent writes to their designated section only", "CEO writes to executive summary and cross-functional pages"]
+  }
+}

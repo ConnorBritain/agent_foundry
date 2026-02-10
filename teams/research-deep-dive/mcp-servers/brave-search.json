@@ -1,0 +1,98 @@
+{
+  "name": "brave-search",
+  "description": "Brave Search API for web and news source discovery across the open internet",
+  "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+    "env": {
+      "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+    }
+  },
+  "transport": {
+    "type": "http",
+    "url": "https://api.search.brave.com/res/v1",
+    "headers": {
+      "X-Subscription-Token": "${BRAVE_API_KEY}",
+      "Accept": "application/json"
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "header": "X-Subscription-Token",
+    "key": "${BRAVE_API_KEY}"
+  },
+  "capabilities": {
+    "web_search": {
+      "search": true,
+      "filter_by_date": true,
+      "filter_by_domain": true,
+      "filter_by_language": true,
+      "max_results_per_query": 20
+    },
+    "news_search": {
+      "search": true,
+      "filter_by_date": true,
+      "filter_by_freshness": true
+    },
+    "summarization": {
+      "snippet_extraction": true,
+      "result_summary": true
+    }
+  },
+  "tools": [
+    {
+      "name": "brave_web_search",
+      "description": "Search the web for sources, articles, reports, and data relevant to the research question",
+      "parameters": {
+        "query": "Search query string",
+        "count": "Number of results to return (default: 10, max: 20)",
+        "offset": "Pagination offset for additional results",
+        "freshness": "Filter by recency: pd (past day), pw (past week), pm (past month), py (past year)",
+        "search_lang": "Language filter (e.g., en, es, fr)",
+        "country": "Country filter for localized results",
+        "text_decorations": "Include bold/italic markers in snippets"
+      }
+    },
+    {
+      "name": "brave_news_search",
+      "description": "Search recent news articles for current events, announcements, and market developments",
+      "parameters": {
+        "query": "News search query string",
+        "count": "Number of results to return (max: 20)",
+        "freshness": "Filter by recency: pd (past day), pw (past week), pm (past month)"
+      }
+    },
+    {
+      "name": "brave_suggest",
+      "description": "Get search query suggestions for expanding research scope",
+      "parameters": {
+        "query": "Partial query to get suggestions for"
+      }
+    }
+  ],
+  "rate_limits": {
+    "free_tier": {
+      "requests_per_second": 1,
+      "requests_per_month": 2000
+    },
+    "paid_tier": {
+      "requests_per_second": 20,
+      "requests_per_month": 20000
+    }
+  },
+  "use_cases": [
+    "General web source discovery for market, competitive, and technology research",
+    "News search for recent developments, announcements, and press coverage",
+    "Company research: press releases, product launches, executive statements",
+    "Industry report discovery from analyst firms and research organizations",
+    "Competitor intelligence: pricing pages, feature lists, customer reviews",
+    "Government and regulatory data discovery",
+    "Fact-checking: verifying source URLs and cross-checking claim accuracy"
+  ],
+  "team_integration": "The Source Analyst uses Brave Search as the primary web discovery tool. For each research sub-question, the Source Analyst executes 3-5 search queries with different formulations and follows citation chains from high-relevance results. The Fact Checker uses Brave Search to verify source URLs and cross-check claims against live web sources. A typical research study consumes 50-200 search queries depending on depth.",
+  "used_by": ["source-analyst", "fact-checker"],
+  "required_env_vars": ["BRAVE_API_KEY"],
+  "optional": false,
+  "notes": "Brave Search is required for all research modes. The free tier (2,000 queries/month) is sufficient for 10-40 research studies per month depending on depth configuration. For teams running research at higher volume, upgrade to a paid tier. Deep research (sources.depth: deep) may consume 100-200 queries per study."
+}

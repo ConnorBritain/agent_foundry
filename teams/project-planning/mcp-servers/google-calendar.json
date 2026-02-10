@@ -1,0 +1,106 @@
+{
+  "name": "google-calendar",
+  "description": "MCP server for Google Calendar integration. Creates calendar events for sprint boundaries, milestones, ceremonies, and deadline reminders. Used by the Scheduler and Integration Planner to map the project timeline to a shared calendar.",
+  "repository": "https://github.com/anthropics/mcp-servers/tree/main/google-calendar",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@anthropic/mcp-server-google-calendar"],
+    "env": {
+      "GOOGLE_CALENDAR_TOKEN": "${GOOGLE_CALENDAR_TOKEN}",
+      "GOOGLE_CALENDAR_ID": "${GOOGLE_CALENDAR_ID}"
+    }
+  },
+  "tools": [
+    {
+      "name": "create_event",
+      "description": "Create a calendar event with title, start/end time, description, attendees, and reminders",
+      "use_in_phase": [6, 7]
+    },
+    {
+      "name": "create_all_day_event",
+      "description": "Create an all-day event for milestones and sprint boundaries",
+      "use_in_phase": [7]
+    },
+    {
+      "name": "create_recurring_event",
+      "description": "Create a recurring event for ceremonies (daily standups, weekly syncs, sprint reviews)",
+      "use_in_phase": [7]
+    },
+    {
+      "name": "list_events",
+      "description": "List existing events in a date range to avoid conflicts when scheduling",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "update_event",
+      "description": "Update an existing event's details (time, description, attendees)",
+      "use_in_phase": [7]
+    },
+    {
+      "name": "delete_event",
+      "description": "Remove an event if the schedule is revised during planning",
+      "use_in_phase": [7]
+    }
+  ],
+  "use_cases": [
+    "Create all-day events for sprint or cycle start and end dates",
+    "Create milestone events with descriptions of expected deliverables",
+    "Schedule recurring ceremony events (daily standups, sprint reviews, retrospectives)",
+    "Set deadline reminder events one week before major milestones",
+    "Create stakeholder review meeting events at the configured reporting cadence",
+    "Block time for PI Planning, kickoffs, or other framework-specific events"
+  ],
+  "team_integration": "The Scheduler prepares calendar event data in Phase 5. The Integration Planner exports these events to Google Calendar in Phase 7, running in parallel with the Coordinator's final review. Events include sprint boundaries (all-day), milestones (all-day with description), recurring ceremonies (per framework), and reminder events (1 week before milestones). The calendar ID is read from CONFIG.local.md or the GOOGLE_CALENDAR_ID environment variable.",
+  "required_env_vars": {
+    "GOOGLE_CALENDAR_TOKEN": {
+      "description": "OAuth2 token for Google Calendar API access",
+      "how_to_get": "Google Cloud Console > APIs & Services > Credentials > Create OAuth client ID > Authorize calendar scope",
+      "required": true
+    },
+    "GOOGLE_CALENDAR_ID": {
+      "description": "Target calendar ID for event creation",
+      "how_to_get": "Google Calendar > Settings > Calendar ID (use 'primary' for the default calendar)",
+      "required": true
+    }
+  },
+  "event_templates": {
+    "sprint_boundary": {
+      "type": "all_day",
+      "title_format": "Sprint {N} | {start_date} - {end_date}",
+      "color": "sage"
+    },
+    "milestone": {
+      "type": "all_day",
+      "title_format": "MILESTONE: {name}",
+      "color": "tomato"
+    },
+    "ceremony_standup": {
+      "type": "recurring",
+      "title_format": "Daily Standup",
+      "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR",
+      "duration_minutes": 15
+    },
+    "ceremony_review": {
+      "type": "recurring",
+      "title_format": "Sprint Review",
+      "recurrence": "RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=FR",
+      "duration_minutes": 60
+    },
+    "ceremony_retro": {
+      "type": "recurring",
+      "title_format": "Sprint Retrospective",
+      "recurrence": "RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=FR",
+      "duration_minutes": 60
+    },
+    "deadline_reminder": {
+      "type": "single",
+      "title_format": "REMINDER: {milestone_name} in 1 week",
+      "color": "banana"
+    }
+  },
+  "estimated_token_overhead": {
+    "per_call": 150,
+    "typical_calls": "5-15",
+    "total": "750-2.25K tokens"
+  }
+}
