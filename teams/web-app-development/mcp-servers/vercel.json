@@ -1,0 +1,8 @@
+{
+  "name": "vercel",
+  "type": "rest",
+  "url": "https://api.vercel.com",
+  "capabilities": ["deployments", "env-vars", "domains", "analytics"],
+  "required_env": ["VERCEL_TOKEN", "VERCEL_ORG_ID"],
+  "documentation": "https://vercel.com/docs/rest-api"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "bamboohr",
+  "type": "rest",
+  "url": "https://api.bamboohr.com/api/gateway.php",
+  "capabilities": ["employees", "time-off", "performance", "reports"],
+  "required_env": ["BAMBOOHR_API_KEY", "BAMBOOHR_SUBDOMAIN"],
+  "documentation": "https://documentation.bamboohr.com/reference"
+}

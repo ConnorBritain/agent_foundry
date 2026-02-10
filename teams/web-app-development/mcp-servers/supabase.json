@@ -1,0 +1,8 @@
+{
+  "name": "supabase",
+  "type": "sse",
+  "url": "https://api.supabase.com",
+  "capabilities": ["database", "auth", "functions", "storage", "realtime"],
+  "required_env": ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"],
+  "documentation": "https://supabase.com/docs/reference"
+}

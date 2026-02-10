@@ -1,0 +1,8 @@
+{
+  "name": "linkedin-ads",
+  "type": "rest",
+  "url": "https://api.linkedin.com/v2",
+  "capabilities": ["campaigns", "creatives", "analytics"],
+  "required_env": ["LINKEDIN_ACCESS_TOKEN"],
+  "documentation": "https://learn.microsoft.com/en-us/linkedin/marketing/"
+}

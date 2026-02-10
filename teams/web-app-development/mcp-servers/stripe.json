@@ -1,0 +1,8 @@
+{
+  "name": "stripe",
+  "type": "rest",
+  "url": "https://api.stripe.com",
+  "capabilities": ["products", "prices", "subscriptions", "webhooks", "customers", "invoices"],
+  "required_env": ["STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET"],
+  "documentation": "https://stripe.com/docs/api"
+}
