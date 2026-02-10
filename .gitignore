@@ -1,0 +1,7 @@
+# Nothing ignored yet - we want specs/ tracked!
+# Orchestration files will be ignored after setup
+
+# OS and IDE
+.DS_Store
+.vscode/
+.idea/
