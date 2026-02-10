@@ -1,4 +1,4 @@
-# Contributing to Agent Foundry
+# Contributing to Sforza
 
 We welcome contributions! Here's how you can help:
 

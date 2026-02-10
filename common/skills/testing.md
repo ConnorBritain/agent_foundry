@@ -2,7 +2,7 @@
 skill_name: "testing"
 version: "1.0.0"
 description: "Writes and manages tests across unit, integration, and e2e levels with coverage targets"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "when asked to write tests for code"
   - "when asked to improve test coverage"

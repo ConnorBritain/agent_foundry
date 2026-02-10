@@ -1,8 +1,8 @@
-# Agent Foundry Roadmap
+# Sforza Roadmap
 
 > **From idea to deployed business — all agents.**
 
-Agent Foundry is an open-source operating system for building businesses with coordinated AI agent teams. This roadmap outlines our journey from the current launch release through our long-term vision for fully autonomous business operations.
+Sforza is an open-source operating system for building businesses with coordinated AI agent teams. This roadmap outlines our journey from the current launch release through our long-term vision for fully autonomous business operations.
 
 ---
 
@@ -78,7 +78,7 @@ Polishing the developer experience, expanding the template library, and bridging
 The flagship feature of v2.0. A background service that manages the full lifecycle of agent teams.
 
 ```
-agent-foundry-daemon start
+sforza-daemon start
 ```
 
 - Background orchestration service with programmatic agent spawning via the Anthropic API
@@ -111,10 +111,10 @@ A full-featured web dashboard served at `localhost:3000`.
 
 ### Python SDK
 
-First-class programmatic access for developers who want to embed Agent Foundry in their own tools.
+First-class programmatic access for developers who want to embed Sforza in their own tools.
 
 ```python
-from agent_foundry import Orchestrator
+from sforza import Orchestrator
 
 orc = Orchestrator(project="my-startup")
 orc.spawn_team("web-app-development")
@@ -167,7 +167,7 @@ orc.assign_task("Build the landing page")
 
 ## v3.0 — Future Vision (6-12 Months Post-Launch)
 
-The long-term vision: Agent Foundry as a continuously operating business engine.
+The long-term vision: Sforza as a continuously operating business engine.
 
 ### 1. Autonomous Business Operations
 
@@ -211,4 +211,4 @@ The order in which major initiatives will be tackled:
 
 ## Contributing
 
-Agent Foundry is open source. If any of these roadmap items excite you, we welcome contributions. Check the individual team template directories for contribution guidelines, or open an issue to discuss new ideas.
+Sforza is open source. If any of these roadmap items excite you, we welcome contributions. Check the individual team template directories for contribution guidelines, or open an issue to discuss new ideas.

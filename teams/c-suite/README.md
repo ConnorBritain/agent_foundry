@@ -156,7 +156,7 @@ teams/c-suite/
 
 ## Cross-Team Integration
 
-This team's outputs feed directly into other Agent Foundry teams:
+This team's outputs feed directly into other Sforza teams:
 
 | Output | Target Team | Input |
 |--------|------------|-------|

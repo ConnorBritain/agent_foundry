@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Agent Foundry — Launch Code Implementation Team
+# Sforza — Launch Code Implementation Team
 # Feature development with testing and deployment
 # Agents: 6 | Cost: ~$40-60 | Duration: ~1 hour
 exec "$(dirname "$0")/start-team.sh" "code-implementation" "${1:-}"

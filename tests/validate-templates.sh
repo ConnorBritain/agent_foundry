@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Agent Foundry — Template Validator
+# Sforza — Template Validator
 # Usage: ./tests/validate-templates.sh [team-name]
 #
 # Validates that team templates follow the gold standard structure.
@@ -12,8 +12,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FOUNDRY_ROOT="$(dirname "$SCRIPT_DIR")"
-TEAMS_DIR="$FOUNDRY_ROOT/teams"
+SFORZA_ROOT="$(dirname "$SCRIPT_DIR")"
+TEAMS_DIR="$SFORZA_ROOT/teams"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -151,7 +151,7 @@ validate_team() {
 # ── Main ──
 
 echo ""
-echo -e "${BOLD}Agent Foundry — Template Validator${NC}"
+echo -e "${BOLD}Sforza — Template Validator${NC}"
 
 if [[ -n "${1:-}" ]]; then
     # Validate specific team

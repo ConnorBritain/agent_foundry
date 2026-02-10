@@ -1,10 +1,10 @@
 # Deployment Guide
 
-> How to deploy Agent Foundry in local development, team CI/CD, and enterprise self-hosted environments.
+> How to deploy Sforza in local development, team CI/CD, and enterprise self-hosted environments.
 
 ## Overview
 
-Agent Foundry runs wherever you can execute a shell and call the Claude API. But the configuration, security requirements, and operational concerns differ significantly between a solo developer running agents on a laptop, a team integrating agents into CI/CD pipelines, and an enterprise deploying across a fleet of managed servers.
+Sforza runs wherever you can execute a shell and call the Claude API. But the configuration, security requirements, and operational concerns differ significantly between a solo developer running agents on a laptop, a team integrating agents into CI/CD pipelines, and an enterprise deploying across a fleet of managed servers.
 
 This guide covers three deployment tiers: local development (single machine, one user), team CI/CD (shared pipelines, multiple contributors), and enterprise self-hosted (managed infrastructure, compliance requirements). Each tier builds on the previous one, adding the configuration and controls needed for that context.
 
@@ -51,8 +51,8 @@ npm install -g @anthropic-ai/claude-code
 export ANTHROPIC_API_KEY="sk-ant-api03-..."
 
 # Option B: Configuration file
-mkdir -p ~/.config/agent-foundry
-cat > ~/.config/agent-foundry/config.yaml << 'EOF'
+mkdir -p ~/.config/sforza
+cat > ~/.config/sforza/config.yaml << 'EOF'
 api:
   provider: anthropic
   key_source: env  # reads from ANTHROPIC_API_KEY
@@ -60,11 +60,11 @@ api:
 EOF
 ```
 
-**Step 3: Clone Agent Foundry Templates**
+**Step 3: Clone Sforza Templates**
 
 ```bash
-git clone https://github.com/your-org/agent-foundry-templates.git
-cd agent-foundry-templates
+git clone https://github.com/your-org/sforza-templates.git
+cd sforza-templates
 ```
 
 **Step 4: Initialize a Workspace**
@@ -90,7 +90,7 @@ cd agent-foundry-templates
 
 ### Local Development Best Practices
 
-- **Use a dedicated workspace directory**: Never point agents at your main development directory. Clone or copy the project into the Agent Foundry workspace.
+- **Use a dedicated workspace directory**: Never point agents at your main development directory. Clone or copy the project into the Sforza workspace.
 - **Set budget limits**: Even locally, configure per-session cost caps to avoid surprise bills during experimentation.
 - **Monitor token usage**: Check `logs/` after each run to understand cost patterns before scaling up.
 - **Use Sonnet as default**: Reserve Opus for orchestrator roles; Haiku for test/formatting roles.
@@ -129,7 +129,7 @@ team:
 
 ### Setup
 
-Team deployment integrates Agent Foundry into shared CI/CD pipelines so agents run automatically on pull requests, merges, or scheduled triggers.
+Team deployment integrates Sforza into shared CI/CD pipelines so agents run automatically on pull requests, merges, or scheduled triggers.
 
 **Step 1: Store API Key as CI/CD Secret**
 
@@ -149,8 +149,8 @@ gh secret set ANTHROPIC_API_KEY --body "sk-ant-api03-..."
 GitHub Actions example:
 
 ```yaml
-# .github/workflows/agent-foundry.yml
-name: Agent Foundry Review
+# .github/workflows/sforza.yml
+name: Sforza Review
 
 on:
   pull_request:
@@ -251,7 +251,7 @@ Triggered manually (workflow_dispatch) for large tasks like migrations or refact
 
 ### Architecture
 
-Enterprise deployment adds a control plane layer between Agent Foundry and the infrastructure.
+Enterprise deployment adds a control plane layer between Sforza and the infrastructure.
 
 ```
                     +------------------+
@@ -287,8 +287,8 @@ api_keys:
     strategy: "vault"  # Options: env, file, vault, aws-secrets-manager
     vault_config:
       address: "https://vault.internal.company.com"
-      path: "secret/data/agent-foundry/api-keys"
-      role: "agent-foundry-reader"
+      path: "secret/data/sforza/api-keys"
+      role: "sforza-reader"
 
   rotation:
     enabled: true
@@ -350,7 +350,7 @@ Enterprise workspaces need isolation and auditing:
 ```yaml
 # Enterprise workspace configuration
 workspace:
-  base_path: "/opt/agent-foundry/workspaces"
+  base_path: "/opt/sforza/workspaces"
   isolation: "container"  # Options: none, directory, container
 
   per_team:
@@ -360,7 +360,7 @@ workspace:
 
   git:
     clone_depth: 50  # Limit history for performance
-    ssh_key_path: "/etc/agent-foundry/deploy-keys/{repo}.key"
+    ssh_key_path: "/etc/sforza/deploy-keys/{repo}.key"
     allowed_repos:
       - "github.com/company/*"
     blocked_repos:
@@ -370,7 +370,7 @@ workspace:
     log_all_file_operations: true
     log_all_commands: true
     retention: "90d"
-    destination: "s3://company-audit-logs/agent-foundry/"
+    destination: "s3://company-audit-logs/sforza/"
 ```
 
 ### Security Considerations
@@ -466,7 +466,7 @@ audit:
 ### Docker Deployment
 
 ```dockerfile
-# Dockerfile for Agent Foundry worker
+# Dockerfile for Sforza worker
 FROM node:20-slim
 
 # Install dependencies
@@ -479,7 +479,7 @@ USER agent
 WORKDIR /home/agent
 
 # Copy configuration
-COPY --chown=agent:agent config/ /home/agent/.config/agent-foundry/
+COPY --chown=agent:agent config/ /home/agent/.config/sforza/
 
 # Workspace mount point
 VOLUME ["/workspace"]
@@ -545,7 +545,7 @@ Transition to Tier 3 basics: centralized API key management, per-team keys, audi
 Full Tier 3: vault-based secrets, container sandboxing, network allowlisting, RBAC, full audit logging, compliance reporting, and centralized budget management. Plan for 2-4 weeks of infrastructure setup before team onboarding.
 
 ### For air-gapped environments
-Agent Foundry requires API access to Anthropic. For air-gapped environments, explore Anthropic's enterprise offerings for on-premises model hosting or use a secure proxy that bridges the gap.
+Sforza requires API access to Anthropic. For air-gapped environments, explore Anthropic's enterprise offerings for on-premises model hosting or use a secure proxy that bridges the gap.
 
 ## Related Resources
 

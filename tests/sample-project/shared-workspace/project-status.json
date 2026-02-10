@@ -2,7 +2,7 @@
   "project_name": "TaskFlow AI",
   "project_slug": "taskflow-ai",
   "initialized": "2026-02-10T00:00:00Z",
-  "foundry_root": "/home/user/agent_templates",
+  "sforza_root": "/home/user/agent_templates",
   "active_teams": [],
   "completed_teams": [],
   "dependencies": [

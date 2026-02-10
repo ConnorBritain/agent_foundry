@@ -1,10 +1,10 @@
 # Optimization Guide
 
-> Optimizing Agent Foundry for cost, speed, and quality through prompt caching, model routing, token budgeting, and execution tuning.
+> Optimizing Sforza for cost, speed, and quality through prompt caching, model routing, token budgeting, and execution tuning.
 
 ## Overview
 
-Running an Agent Foundry team involves three competing concerns: cost (how much you spend on API calls), speed (how fast the team completes work), and quality (how good the output is). You can rarely maximize all three simultaneously, but you can optimize the balance for your specific situation.
+Running an Sforza team involves three competing concerns: cost (how much you spend on API calls), speed (how fast the team completes work), and quality (how good the output is). You can rarely maximize all three simultaneously, but you can optimize the balance for your specific situation.
 
 This guide covers five optimization levers: prompt caching to reduce cost, model routing to match capability to need, token budgeting to control spending, parallel execution optimization to improve speed, and output quality tuning to improve results. Each lever includes concrete configurations and measurable impact estimates.
 
@@ -206,7 +206,7 @@ budget:
 
   on_budget_exceeded:
     action: "checkpoint_and_halt"  # Options: warn, throttle, halt
-    notification: "slack:#agent-foundry-alerts"
+    notification: "slack:#sforza-alerts"
 ```
 
 ### Token-Efficient Prompting

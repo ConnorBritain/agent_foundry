@@ -1,8 +1,8 @@
-# Agent Foundry User Guide
+# Sforza User Guide
 
 > **From idea to deployed business -- all agents.**
 
-This guide walks you through everything you need to know to use Agent Foundry, an open-source system for building businesses with coordinated AI agent teams. Whether you are launching a SaaS startup, a content business, or an internal tool, Agent Foundry provides the teams to get it done.
+This guide walks you through everything you need to know to use Sforza, an open-source system for building businesses with coordinated AI agent teams. Whether you are launching a SaaS startup, a content business, or an internal tool, Sforza provides the teams to get it done.
 
 ---
 
@@ -38,8 +38,8 @@ The Claude Max Plan at $200/month provides the best experience for running multi
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/ConnorBritain/agent_foundry.git
-cd agent-foundry
+git clone https://github.com/ConnorBritain/sforza.git
+cd sforza
 ```
 
 ### Step 2: Run the Initialization Script
@@ -128,7 +128,7 @@ The budget section of your charter controls spending guardrails:
 - **Alert threshold**: 80% of weekly budget
 ```
 
-**Plan comparison for Agent Foundry usage:**
+**Plan comparison for Sforza usage:**
 
 | Plan | Monthly Cost | Best For | Limitation |
 |------|-------------|----------|------------|
@@ -141,7 +141,7 @@ The budget section of your charter controls spending guardrails:
 
 ## 3. Running Teams
 
-Agent Foundry supports three execution modes. Choose the one that matches your budget and timeline.
+Sforza supports three execution modes. Choose the one that matches your budget and timeline.
 
 ### Serial Execution (Budget-Conscious)
 
@@ -558,7 +558,7 @@ Artifacts are standard files (Markdown, JSON, code files) that you can:
 
 ### How Teams Coordinate
 
-Teams in Agent Foundry coordinate through four shared mechanisms:
+Teams in Sforza coordinate through four shared mechanisms:
 
 1. **Artifact sharing** -- Teams read each other's outputs from `shared-workspace/artifacts/<team>/`. When the C-Suite team publishes brand guidelines, the Content Creation team automatically picks them up.
 
@@ -852,14 +852,14 @@ The initialization script detected a previous project with the same name. You ca
 
 - **GitHub Issues:** Report bugs and request features on the project's GitHub repository.
 - **Discussions:** Ask questions and share your builds in the GitHub Discussions tab.
-- **Community:** Join the Agent Foundry community for tips, templates, and project showcases.
+- **Community:** Join the Sforza community for tips, templates, and project showcases.
 - **README:** See the project [README.md](../README.md) for architecture details and links to inspiration.
 
 ---
 
 ## Complete Example: Sarah's SaaS Startup
 
-This walkthrough follows Sarah, a solo founder, as she uses Agent Foundry to go from idea to deployed MVP. Every step, cost, and timeline is based on realistic usage with the Claude Max 200 plan.
+This walkthrough follows Sarah, a solo founder, as she uses Sforza to go from idea to deployed MVP. Every step, cost, and timeline is based on realistic usage with the Claude Max 200 plan.
 
 ### The Idea
 
@@ -870,8 +870,8 @@ Sarah wants to build **FitTrack Pro**, a B2B SaaS platform that helps personal t
 Sarah clones the repo and runs initialization:
 
 ```bash
-git clone https://github.com/ConnorBritain/agent_foundry.git
-cd agent-foundry
+git clone https://github.com/ConnorBritain/sforza.git
+cd sforza
 ./initialize.sh fittrack-pro
 ```
 
@@ -1064,4 +1064,4 @@ cat projects/<project-name>/shared-workspace/dependency-tracker.md
 
 ---
 
-*This guide is part of the Agent Foundry project. For architecture details, see the [README](../README.md). For contributing, see [CONTRIBUTING.md](../CONTRIBUTING.md).*
+*This guide is part of the Sforza project. For architecture details, see the [README](../README.md). For contributing, see [CONTRIBUTING.md](../CONTRIBUTING.md).*

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SKILL.md validator for Agent Foundry.
+SKILL.md validator for Sforza.
 
 Validates SKILL.md files against the agentskills.io specification, checking:
   - YAML frontmatter structure (between ``---`` markers)

@@ -39,8 +39,8 @@ brand_voice_notes: ""              # Free-text description of brand personality 
 style_guide:
   source: ""                       # Path to style guide file, or "none"
   terminology:                     # Product names, branded terms that must be used consistently
-    # - term: "Agent Foundry"
-    #   usage: "Always capitalize. Never 'agent foundry' or 'AgentFoundry'."
+    # - term: "Sforza"
+    #   usage: "Always capitalize. Never lowercase or as one word."
     # - term: "AI agent"
     #   usage: "Lowercase 'agent'. Never 'Agent' unless starting a sentence."
   formatting:

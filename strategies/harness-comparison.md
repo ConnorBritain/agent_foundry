@@ -1,10 +1,10 @@
 # Agent Harness & Knowledge Delivery Comparison
 
-> Comparing agent harness platforms, knowledge delivery mechanisms (AGENTS.md vs SKILL.md vs MCP), and migration strategies for Agent Foundry teams.
+> Comparing agent harness platforms, knowledge delivery mechanisms (AGENTS.md vs SKILL.md vs MCP), and migration strategies for Sforza teams.
 
 ## Overview
 
-Agent Foundry is harness-agnostic by design, and the knowledge you feed agents can take three distinct forms: passive context (AGENTS.md), triggered workflows (SKILL.md), or persistent tool connections (MCP servers). Choosing the right harness determines how agents interact with code. Choosing the right knowledge delivery mechanism determines how reliably agents access the information they need.
+Sforza is harness-agnostic by design, and the knowledge you feed agents can take three distinct forms: passive context (AGENTS.md), triggered workflows (SKILL.md), or persistent tool connections (MCP servers). Choosing the right harness determines how agents interact with code. Choosing the right knowledge delivery mechanism determines how reliably agents access the information they need.
 
 This guide covers both decisions. The first half compares harness platforms — Claude Code, Kilo Code, OpenClaw, Cursor, and Windsurf — across capabilities, pricing, and integration depth. The second half compares knowledge delivery mechanisms, anchored in Vercel's eval study showing that AGENTS.md achieves a 100% pass rate versus Skills at 79%, and addresses the critical 56% non-trigger problem for Skills.
 
@@ -198,7 +198,7 @@ If you use Skills, mitigate the trigger reliability issue:
 - Headless operation for CI/CD pipelines and fully automated agent workflows.
 - First-class AGENTS.md and SKILL.md support — the knowledge delivery mechanisms described above work natively.
 - MCP-native with full Model Context Protocol support for external tool integration.
-- SDK access enables programmatic orchestration — this is how Agent Foundry launches and manages agents.
+- SDK access enables programmatic orchestration — this is how Sforza launches and manages agents.
 - Unlimited parallel instances with no per-seat licensing constraints.
 - Built-in session management with context tracking and checkpoint support.
 
@@ -207,7 +207,7 @@ If you use Skills, mitigate the trigger reliability issue:
 - No visual IDE — pure terminal experience.
 - Usage-based pricing requires budget controls for large-scale runs.
 
-**Best for in Agent Foundry:**
+**Best for in Sforza:**
 - Orchestrator agents that coordinate other agents via the SDK.
 - All automated agents running unattended in headless mode.
 - CI/CD pipeline agents for review, testing, and deployment.
@@ -240,7 +240,7 @@ agents:
 - Limited multi-agent coordination capabilities.
 - No native SKILL.md or AGENTS.md support (files are read as plain context).
 
-**Best for in Agent Foundry:**
+**Best for in Sforza:**
 - Human-in-the-loop roles where output needs visual review before proceeding.
 - Frontend development where visual diff and preview capabilities add value.
 - Pair programming sessions where a human works alongside an agent in real time.
@@ -259,7 +259,7 @@ agents:
 - Limited programmatic control for orchestration.
 - Cascade can over-gather context, consuming tokens on irrelevant files.
 
-**Best for in Agent Foundry:**
+**Best for in Sforza:**
 - Exploration agents that need to deeply understand a codebase before making changes.
 - Refactoring agents where Cascade's multi-step flow works well for large-scale changes.
 - Human-monitored workflows similar to Cursor.
@@ -292,7 +292,7 @@ agents:
 - Community-maintained without commercial support guarantees.
 - MCP support is limited compared to Claude Code.
 
-**Best for in Agent Foundry:**
+**Best for in Sforza:**
 - Budget-constrained teams where subscription-free tooling matters.
 - Multi-provider workflows requiring different model providers for different agents.
 - Open-source requirements where tooling must be fully auditable.
@@ -320,7 +320,7 @@ Typical monthly costs by usage pattern (as of February 2026):
 ```
 START: What is your primary use case?
   |
-  |-- Multi-agent team workflows (Agent Foundry)?
+  |-- Multi-agent team workflows (Sforza)?
   |     |
   |     |-- Enterprise compliance or audit requirements?
   |     |     YES --> Claude Code (SDK orchestration, security, audit logging)
@@ -328,7 +328,7 @@ START: What is your primary use case?
   |     |
   |     |-- Open-source or custom model requirement?
   |     |     YES --> OpenClaw (open source, multi-model, self-hosted)
-  |     |     NO  --> Claude Code (tightest Agent Foundry integration)
+  |     |     NO  --> Claude Code (tightest Sforza integration)
   |
   |-- Individual developer productivity?
   |     |
@@ -363,7 +363,7 @@ START: What is your primary use case?
 
 ## Part 4: Mixing Harnesses in a Team
 
-Agent Foundry supports heterogeneous teams where different agents use different harnesses. This is often the optimal configuration.
+Sforza supports heterogeneous teams where different agents use different harnesses. This is often the optimal configuration.
 
 ```yaml
 team:
@@ -482,8 +482,8 @@ Use shared files (shared-state/, checkpoints, progress notes) for inter-agent co
 
 ## Recommendations
 
-### For teams starting with Agent Foundry
-Start with Claude Code for all agents. It has the tightest integration with Agent Foundry's orchestration layer, native AGENTS.md and SKILL.md support, and the SDK for programmatic control. Swap individual agents to other harnesses later if needed.
+### For teams starting with Sforza
+Start with Claude Code for all agents. It has the tightest integration with Sforza's orchestration layer, native AGENTS.md and SKILL.md support, and the SDK for programmatic control. Swap individual agents to other harnesses later if needed.
 
 ### For knowledge delivery
 Use the hybrid approach: AGENTS.md for framework knowledge and conventions (100% availability), SKILL.md for complex multi-step workflows (on-demand loading), and MCP for external tool integration. The Vercel study shows passive context beats triggered retrieval for reference material.

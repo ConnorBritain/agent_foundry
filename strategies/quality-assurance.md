@@ -6,13 +6,13 @@
 
 AI agents produce output faster than humans can review it. Without quality assurance strategies, this speed becomes a liability — agents generate plausible-looking code that contains subtle bugs, inconsistencies, or architectural drift. The solution is not to slow agents down but to build quality checks into the workflow itself.
 
-Agent Foundry supports multiple QA patterns: agent-to-agent review (one agent checks another's work), automated validation (tests, linters, type checkers), human-in-the-loop checkpoints (pausing for human approval at critical points), and output validation pipelines (structured verification of deliverables against specifications).
+Sforza supports multiple QA patterns: agent-to-agent review (one agent checks another's work), automated validation (tests, linters, type checkers), human-in-the-loop checkpoints (pausing for human approval at critical points), and output validation pipelines (structured verification of deliverables against specifications).
 
 This guide covers each pattern with implementation details so you can build QA into your teams from the start rather than bolting it on after quality problems emerge.
 
 ## QA Pattern 1: Multi-Agent Review
 
-The most effective quality improvement in Agent Foundry is having one agent review another's output. A dedicated reviewer agent catches errors that the implementing agent missed — different "perspectives" from different system prompts surface different issues.
+The most effective quality improvement in Sforza is having one agent review another's output. A dedicated reviewer agent catches errors that the implementing agent missed — different "perspectives" from different system prompts surface different issues.
 
 ### Basic Review Pattern
 
@@ -92,7 +92,7 @@ review_pipeline:
 
 ### Review Effectiveness Data
 
-Based on typical Agent Foundry team runs:
+Based on typical Sforza team runs:
 
 | Configuration | Bug Detection Rate | Cost Overhead | Recommended For |
 |---|---|---|---|
@@ -183,7 +183,7 @@ Configure git hooks to enforce validation:
 
 ```bash
 #!/bin/bash
-# .git/hooks/pre-commit (installed by Agent Foundry)
+# .git/hooks/pre-commit (installed by Sforza)
 
 echo "Running pre-commit validation..."
 
@@ -251,7 +251,7 @@ checkpoints:
     notification:
       channel: "slack:#architecture-review"
       message: |
-        Agent Foundry requires human approval:
+        Sforza requires human approval:
         Team: {team_name}
         Agent: {agent_name}
         Task: Architecture design for {project_name}

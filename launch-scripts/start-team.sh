@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Agent Foundry — Generic Team Launch Script
+# Sforza — Generic Team Launch Script
 # Usage: ./launch-scripts/start-team.sh <team-name> <project-dir>
 #
 # This is the shared launcher used by all team-specific scripts.
@@ -8,7 +8,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FOUNDRY_ROOT="$(dirname "$SCRIPT_DIR")"
+SFORZA_ROOT="$(dirname "$SCRIPT_DIR")"
 
 # Colors
 RED='\033[0;31m'
@@ -63,9 +63,9 @@ if [[ -z "$PROJECT_DIR" ]]; then
 fi
 
 # Validate team exists
-TEAM_DIR="$FOUNDRY_ROOT/teams/$TEAM_NAME"
+TEAM_DIR="$SFORZA_ROOT/teams/$TEAM_NAME"
 if [[ ! -d "$TEAM_DIR" ]]; then
-    error "Team not found: $TEAM_NAME\nLook in $FOUNDRY_ROOT/teams/ for available teams."
+    error "Team not found: $TEAM_NAME\nLook in $SFORZA_ROOT/teams/ for available teams."
 fi
 
 # Validate project exists
@@ -81,7 +81,7 @@ mkdir -p "$TEAM_WORKSPACE"
 mkdir -p "$ARTIFACTS_DIR"
 
 echo ""
-echo -e "${BOLD}${CYAN}Agent Foundry — Launching Team${NC}"
+echo -e "${BOLD}${CYAN}Sforza — Launching Team${NC}"
 echo ""
 echo "  Team:      $TEAM_NAME"
 echo "  Template:  $TEAM_DIR"
@@ -94,7 +94,7 @@ echo ""
 CHARTER_PATH="$PROJECT_DIR/PROJECT_CHARTER.md"
 STATUS_PATH="$PROJECT_DIR/shared-workspace/project-status.json"
 
-PROMPT="You are launching the ${TEAM_NAME} team for an Agent Foundry project.
+PROMPT="You are launching the ${TEAM_NAME} team for an Sforza project.
 
 TEAM TEMPLATE LOCATION: ${TEAM_DIR}
 Read the following files to understand your team:

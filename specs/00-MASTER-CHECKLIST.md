@@ -1,4 +1,4 @@
-# Agent Foundry - Master Progress Checklist
+# Sforza - Master Progress Checklist
 
 ## Overall Status
 - **Started**: 2026-02-10

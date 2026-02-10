@@ -1,4 +1,4 @@
-# Agent Foundry
+# Sforza
 
 > Where agent teams are forged
 
@@ -43,7 +43,7 @@ I've researched agent steering approaches including Skills, AGENTS.md, and MCP p
 
 ## My Project Goals
 
-I need a comprehensive **Agent Foundry** organized into three categorical levels:
+I need a comprehensive **Sforza** organized into three categorical levels:
 
 ### 1. **Common** - Universal Building Blocks
 Foundational templates used across all agent implementations:
@@ -442,7 +442,7 @@ if __name__ == "__main__":
 
 ---
 
-Please help me build this comprehensive Agent Foundry:
+Please help me build this comprehensive Sforza:
 
 ### 1. Common Templates Layer
 
@@ -1825,7 +1825,7 @@ Testing, validation, and quality measurement for agent workflows. This should in
 
 ## Deliverable Format
 
-The complete Agent Foundry should be organized as:
+The complete Sforza should be organized as:
 
 ```
 agent-templates/
@@ -2007,7 +2007,7 @@ Each component should be:
 
 ## Success Criteria
 
-The Agent Foundry should enable users to:
+The Sforza should enable users to:
 
 ### Common Layer Success
 - [ ] Copy any AGENTS.md template and adapt to their framework in <15 minutes

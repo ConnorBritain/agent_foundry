@@ -1,6 +1,6 @@
 # Shared Workspace
 
-The shared workspace is the coordination hub for multi-team Agent Foundry projects. All teams read from and write to this directory to stay synchronized.
+The shared workspace is the coordination hub for multi-team Sforza projects. All teams read from and write to this directory to stay synchronized.
 
 ## Structure
 

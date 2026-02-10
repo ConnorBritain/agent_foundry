@@ -1,8 +1,8 @@
-# Scenario: Cross-Team Coordination Across Agent Foundry Teams
+# Scenario: Cross-Team Coordination Across Sforza Teams
 
 ## Context
 
-A project requires coordinated work across multiple Agent Foundry teams. The project planning team must identify cross-team dependencies, establish integration contracts, schedule handoff points, and create a communication plan that keeps all teams aligned. This scenario exercises the Integration Planner's cross-team dependency mapping capabilities.
+A project requires coordinated work across multiple Sforza teams. The project planning team must identify cross-team dependencies, establish integration contracts, schedule handoff points, and create a communication plan that keeps all teams aligned. This scenario exercises the Integration Planner's cross-team dependency mapping capabilities.
 
 ## Trigger
 

@@ -4,11 +4,11 @@
 
 ## Overview
 
-Most Agent Foundry tasks complete within a single context window. But some don't. Large refactoring jobs, multi-day feature implementations, and complex debugging sessions can push agents past the 200K token context limit. When that happens, the agent loses track of earlier context, starts repeating itself, or simply fails.
+Most Sforza tasks complete within a single context window. But some don't. Large refactoring jobs, multi-day feature implementations, and complex debugging sessions can push agents past the 200K token context limit. When that happens, the agent loses track of earlier context, starts repeating itself, or simply fails.
 
 Long-running agents require deliberate strategies: checkpointing progress, compressing context, resuming sessions cleanly, and splitting work across multiple sessions. Without these strategies, you waste tokens re-explaining context and risk inconsistent outputs as the agent forgets what it did earlier.
 
-This guide covers practical patterns for managing agents that outlive a single context window, including concrete implementations you can apply to your Agent Foundry team configurations.
+This guide covers practical patterns for managing agents that outlive a single context window, including concrete implementations you can apply to your Sforza team configurations.
 
 ## Understanding Context Window Limits
 
@@ -96,7 +96,7 @@ Set checkpoints based on events, not just time:
 
 ### Implementing Checkpoints
 
-Agent Foundry checkpoints are written to the shared state directory:
+Sforza checkpoints are written to the shared state directory:
 
 ```bash
 # Checkpoint file location

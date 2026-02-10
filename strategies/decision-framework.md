@@ -1,10 +1,10 @@
 # Decision Framework
 
-> A structured framework for deciding team composition, execution strategy, and resource allocation in Agent Foundry.
+> A structured framework for deciding team composition, execution strategy, and resource allocation in Sforza.
 
 ## Overview
 
-Agent Foundry gives you the building blocks — agent roles, model tiers, harnesses, and orchestration patterns. But the blocks can be assembled in many ways, and the right assembly depends on your project. A solo developer automating tests needs a different configuration than an enterprise team building a product from a specification.
+Sforza gives you the building blocks — agent roles, model tiers, harnesses, and orchestration patterns. But the blocks can be assembled in many ways, and the right assembly depends on your project. A solo developer automating tests needs a different configuration than an enterprise team building a product from a specification.
 
 This framework provides decision trees, evaluation criteria, and allocation models so you can make these choices systematically rather than by intuition. Each decision point includes concrete criteria and recommended configurations.
 
@@ -407,7 +407,7 @@ budget_monitoring:
 
 ## Quick Decision Checklist
 
-Use this checklist before launching any Agent Foundry team:
+Use this checklist before launching any Sforza team:
 
 ```
 [ ] Have I identified the project goal clearly?
@@ -430,8 +430,8 @@ Use this checklist before launching any Agent Foundry team:
 
 ## Recommendations
 
-### For first-time Agent Foundry users
-Start with a 3-agent team: one Sonnet coordinator, one Sonnet developer, and one Haiku tester. Run in pipeline (serial) mode. This is simple, predictable, and teaches you how Agent Foundry works before you scale up.
+### For first-time Sforza users
+Start with a 3-agent team: one Sonnet coordinator, one Sonnet developer, and one Haiku tester. Run in pipeline (serial) mode. This is simple, predictable, and teaches you how Sforza works before you scale up.
 
 ### For maximizing speed
 Use phased parallel execution with file ownership. Run the orchestrator first (5 minutes), then fan out to 3-4 parallel developers, then fan in for review. This achieves near-linear speedup on parallelizable work.

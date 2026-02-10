@@ -1,10 +1,10 @@
 # Model Selection Guide
 
-> How to choose the right Claude model for each agent role in your Agent Foundry teams.
+> How to choose the right Claude model for each agent role in your Sforza teams.
 
 ## Overview
 
-Every agent in an Agent Foundry team runs on a Claude model. The model you assign to each agent determines its reasoning depth, speed, cost, and output quality. Choosing well means your team runs faster, costs less, and produces better results. Choosing poorly means you either overpay for simple tasks or get poor results on complex ones.
+Every agent in an Sforza team runs on a Claude model. The model you assign to each agent determines its reasoning depth, speed, cost, and output quality. Choosing well means your team runs faster, costs less, and produces better results. Choosing poorly means you either overpay for simple tasks or get poor results on complex ones.
 
 Claude currently offers three model tiers: Opus, Sonnet, and Haiku. Each tier exists for a reason — Opus for deep reasoning on hard problems, Sonnet for balanced performance on most tasks, and Haiku for high-volume work where speed and cost matter more than nuance. The right model for an agent depends entirely on what that agent does.
 
