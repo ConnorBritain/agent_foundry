@@ -1,0 +1,31 @@
+{
+  "project_name": "TaskFlow AI",
+  "project_slug": "taskflow-ai",
+  "initialized": "2026-02-10T00:00:00Z",
+  "foundry_root": "/home/user/agent_templates",
+  "active_teams": [],
+  "completed_teams": [],
+  "dependencies": [
+    {
+      "from": "c-suite",
+      "to": "content-creation",
+      "dependency": "Brand positioning and messaging framework",
+      "status": "pending"
+    },
+    {
+      "from": "research-deep-dive",
+      "to": "c-suite",
+      "dependency": "Market sizing data for financial model",
+      "status": "pending"
+    }
+  ],
+  "budget": {
+    "daily_limit": null,
+    "weekly_limit": 150,
+    "monthly_limit": 450,
+    "spent_today": 0,
+    "spent_this_week": 0,
+    "spent_this_month": 0
+  },
+  "phase": "initialization"
+}
