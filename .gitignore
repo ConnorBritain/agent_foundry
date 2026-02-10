@@ -26,3 +26,11 @@ venv/
 dist/
 build/
 *.egg-info/
+
+# Multi-team workspace (team-specific working directories)
+/*-workspace/
+!shared-workspace/
+
+# Team-specific logs
+*-workspace/logs/
+*-workspace/temp/

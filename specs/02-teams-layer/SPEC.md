@@ -19,6 +19,9 @@ Teams are the primary unit of work in Agent Foundry. A user selects a team, conf
 | Content Creation | Research-backed, humanized content production | 7 | $15-60/article | Medium |
 | C-Suite | Comprehensive business planning with executable artifacts | 7 | $50-200/plan | High |
 | Research Deep Dive | Academic, market, or product research with configurable depth | 4-11 (modal) | $20-120/study | Variable |
+| Web App Development | Build and deploy full-stack SaaS applications | 7 | $80-150/app | High |
+| Sales & Marketing | Go-to-market strategy and pipeline execution | 7 | $60-120/campaign | High |
+| Recruitment & HR | End-to-end people operations | 6 | $50-100/cycle | Medium |
 
 ---
 
@@ -241,6 +244,11 @@ Teams can chain together for complex workflows:
 | Research Deep Dive | Market Analysis | C-Suite | Market context |
 | Project Planning | Sprint Plan | Code Implementation | Task assignments |
 | Research Deep Dive | Product Research | Project Planning | Feature priorities |
+| C-Suite | Product Roadmap | Web App Development | Feature requirements |
+| C-Suite | GTM Strategy | Sales & Marketing | Campaign briefs |
+| C-Suite | Hiring Plan | Recruitment & HR | Role definitions |
+| Sales & Marketing | Customer Feedback | Content Creation | Content topics |
+| Web App Development | App Documentation | Content Creation | Technical content |
 
 ---
 

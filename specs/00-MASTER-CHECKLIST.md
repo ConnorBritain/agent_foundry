@@ -138,6 +138,48 @@ See: [specs/02-teams-layer/CHECKLIST.md](02-teams-layer/CHECKLIST.md)
 - [ ] Scenarios
 - [ ] Examples
 
+### Web App Development Team
+- [ ] README.md
+- [ ] TEAM_SPEC.md
+- [ ] MODEL_CONFIGS.md
+- [ ] ORCHESTRATION.md
+- [ ] CONFIG.md
+- [ ] cost-analysis.md
+- [ ] deployment-guide.md
+- [ ] Agent AGENTS.md files (7 agents)
+- [ ] Agent skills
+- [ ] MCP server configs
+- [ ] Scenarios
+- [ ] Examples
+
+### Sales & Marketing Team
+- [ ] README.md
+- [ ] TEAM_SPEC.md
+- [ ] MODEL_CONFIGS.md
+- [ ] ORCHESTRATION.md
+- [ ] CONFIG.md
+- [ ] cost-analysis.md
+- [ ] deployment-guide.md
+- [ ] Agent AGENTS.md files (7 agents)
+- [ ] Agent skills
+- [ ] MCP server configs
+- [ ] Scenarios
+- [ ] Examples
+
+### Recruitment & HR Team
+- [ ] README.md
+- [ ] TEAM_SPEC.md
+- [ ] MODEL_CONFIGS.md
+- [ ] ORCHESTRATION.md
+- [ ] CONFIG.md
+- [ ] cost-analysis.md
+- [ ] deployment-guide.md
+- [ ] Agent AGENTS.md files (6 agents)
+- [ ] Agent skills
+- [ ] MCP server configs
+- [ ] Scenarios
+- [ ] Examples
+
 ## Phase 3: Strategies Layer
 See: [specs/03-strategies-layer/CHECKLIST.md](03-strategies-layer/CHECKLIST.md)
 
@@ -180,8 +222,8 @@ See: [specs/04-examples/CHECKLIST.md](04-examples/CHECKLIST.md)
 | AGENTS.md Templates | 11 | 0 | 11 |
 | Universal Skills | 10 | 0 | 10 |
 | Utilities | 4 | 4 | 0 |
-| Team Templates (5 teams) | ~60 | 0 | ~60 |
+| Team Templates (8 teams) | ~96 | 0 | ~96 |
 | Strategy Guides | 8 | 0 | 8 |
 | Examples | 6 | 0 | 6 |
 | Top-Level Docs | 5 | 0 | 5 |
-| **TOTAL** | **~124** | **11** | **~113** |
+| **TOTAL** | **~160** | **11** | **~149** |

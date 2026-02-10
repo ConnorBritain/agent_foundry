@@ -193,5 +193,111 @@
 
 ---
 
+## Web App Development Team
+### Core Documentation
+- [ ] teams/web-app-development/README.md
+- [ ] teams/web-app-development/TEAM_SPEC.md
+- [ ] teams/web-app-development/MODEL_CONFIGS.md
+- [ ] teams/web-app-development/ORCHESTRATION.md
+- [ ] teams/web-app-development/CONFIG.md
+- [ ] teams/web-app-development/cost-analysis.md
+- [ ] teams/web-app-development/deployment-guide.md
+
+### Agent Definitions (7 agents)
+- [ ] agents/coordinator/AGENTS.md
+- [ ] agents/frontend-engineer/AGENTS.md
+- [ ] agents/backend-engineer/AGENTS.md
+- [ ] agents/database-architect/AGENTS.md
+- [ ] agents/devops-engineer/AGENTS.md
+- [ ] agents/ui-ux-designer/AGENTS.md
+- [ ] agents/qa-engineer/AGENTS.md
+
+### Agent Skills
+- [ ] Frontend skills
+- [ ] Backend skills
+- [ ] DevOps skills
+- [ ] Testing skills
+
+### MCP Servers
+- [ ] mcp-servers/github.json
+- [ ] mcp-servers/vercel.json
+- [ ] mcp-servers/README.md
+
+### Validation
+- [ ] scenarios/
+- [ ] examples/
+
+---
+
+## Sales & Marketing Team
+### Core Documentation
+- [ ] teams/sales-marketing/README.md
+- [ ] teams/sales-marketing/TEAM_SPEC.md
+- [ ] teams/sales-marketing/MODEL_CONFIGS.md
+- [ ] teams/sales-marketing/ORCHESTRATION.md
+- [ ] teams/sales-marketing/CONFIG.md
+- [ ] teams/sales-marketing/cost-analysis.md
+- [ ] teams/sales-marketing/deployment-guide.md
+
+### Agent Definitions (7 agents)
+- [ ] agents/coordinator/AGENTS.md
+- [ ] agents/market-strategist/AGENTS.md
+- [ ] agents/content-marketer/AGENTS.md
+- [ ] agents/sales-development/AGENTS.md
+- [ ] agents/analytics-specialist/AGENTS.md
+- [ ] agents/campaign-manager/AGENTS.md
+- [ ] agents/customer-success/AGENTS.md
+
+### Agent Skills
+- [ ] Market research skills
+- [ ] Campaign management skills
+- [ ] Sales pipeline skills
+- [ ] Analytics skills
+
+### MCP Servers
+- [ ] mcp-servers/hubspot.json
+- [ ] mcp-servers/google-analytics.json
+- [ ] mcp-servers/README.md
+
+### Validation
+- [ ] scenarios/
+- [ ] examples/
+
+---
+
+## Recruitment & HR Team
+### Core Documentation
+- [ ] teams/recruitment-hr/README.md
+- [ ] teams/recruitment-hr/TEAM_SPEC.md
+- [ ] teams/recruitment-hr/MODEL_CONFIGS.md
+- [ ] teams/recruitment-hr/ORCHESTRATION.md
+- [ ] teams/recruitment-hr/CONFIG.md
+- [ ] teams/recruitment-hr/cost-analysis.md
+- [ ] teams/recruitment-hr/deployment-guide.md
+
+### Agent Definitions (6 agents)
+- [ ] agents/coordinator/AGENTS.md
+- [ ] agents/talent-sourcer/AGENTS.md
+- [ ] agents/screening-specialist/AGENTS.md
+- [ ] agents/interview-coordinator/AGENTS.md
+- [ ] agents/compensation-analyst/AGENTS.md
+- [ ] agents/onboarding-specialist/AGENTS.md
+
+### Agent Skills
+- [ ] Talent sourcing skills
+- [ ] Screening skills
+- [ ] Interview skills
+- [ ] Compensation analysis skills
+
+### MCP Servers
+- [ ] mcp-servers/linkedin.json
+- [ ] mcp-servers/README.md
+
+### Validation
+- [ ] scenarios/
+- [ ] examples/
+
+---
+
 ## Teams Layer README
 - [ ] teams/README.md

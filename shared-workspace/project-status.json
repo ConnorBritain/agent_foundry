@@ -1,0 +1,23 @@
+{
+  "project_name": "MyProject",
+  "initialized": "2026-02-09T20:00:00Z",
+  "active_teams": [
+    {
+      "team": "business-planning",
+      "status": "active",
+      "phase": "financial-modeling",
+      "progress": "65%",
+      "workspace": "business-planning-workspace/",
+      "artifacts_path": "shared-workspace/artifacts/business-planning/",
+      "last_update": "2026-02-09T20:30:00Z"
+    }
+  ],
+  "dependencies": [
+    {
+      "from_team": "content-creation",
+      "to_team": "business-planning",
+      "dependency": "Brand guidelines and positioning",
+      "status": "pending"
+    }
+  ]
+}
