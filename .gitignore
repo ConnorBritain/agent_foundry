@@ -1,8 +1,10 @@
 # Agent runtime state (don't commit, changes constantly)
 /shared-state/agent-status.json
-/shared-state/locks/
+/shared-state/locks/*
+!/shared-state/locks/.gitkeep
 /shared-state/communication.md
-/logs/active/
+/logs/active/*
+!/logs/active/.gitkeep
 *.log
 
 # Environment and secrets
