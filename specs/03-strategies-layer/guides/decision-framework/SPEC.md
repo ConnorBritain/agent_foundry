@@ -269,7 +269,7 @@ Recommended allocation by workflow phase:
 - Benefits from diverse perspectives (CFO challenges CEO assumptions)
 - Quality requires cross-functional review
 - High value output justifies higher cost
-- **Decision**: 7-agent team (Business-in-a-Box template)
+- **Decision**: 7-agent team (C-Suite template)
 - **Budget**: ~700K tokens, justified by output value
 
 #### Example 5: "Sync or async for content creation?"

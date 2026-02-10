@@ -205,7 +205,7 @@ Quick reference for model assignments across team templates:
 | Humanizer | Sonnet 4.5 | Opus 4.6 | Nuanced voice matching |
 | Fact-Checker | Haiku 4.5 | Sonnet 4.5 | Technical claims |
 
-#### Business-in-a-Box Team
+#### C-Suite Team
 | Role | Default Model | Alternative | When to Switch |
 |------|--------------|-------------|----------------|
 | CEO/Strategy | Opus 4.6 | - | Always use strongest model |

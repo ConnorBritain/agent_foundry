@@ -219,7 +219,7 @@ The following mapping is canonical and MUST be included:
 - **Humanizer**: Custom personality (see team-specific notes)
 - **Critic**: Skeptical Critic + Detail Perfectionist
 
-#### Business-in-a-Box Team
+#### C-Suite Team
 - **CEO**: Strategic Visionary + Diplomatic Facilitator
 - **CFO**: Cautious Analyst + Skeptical Critic
 - **CMO**: Enthusiastic Supporter + Customer Champion

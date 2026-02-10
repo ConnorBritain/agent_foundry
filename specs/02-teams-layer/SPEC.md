@@ -6,7 +6,7 @@
 
 The Teams Layer provides pre-configured multi-agent team templates for specific use cases. Each team template is a complete, deployable package containing agent definitions, coordination patterns, cost projections, and execution guides.
 
-Teams are the primary unit of work in the Agent Template Library. A user selects a team, configures it for their context, and deploys it to accomplish a complex goal that would be impractical for a single agent.
+Teams are the primary unit of work in Agent Foundry. A user selects a team, configures it for their context, and deploys it to accomplish a complex goal that would be impractical for a single agent.
 
 ---
 
@@ -17,7 +17,7 @@ Teams are the primary unit of work in the Agent Template Library. A user selects
 | Code Implementation | Build features from requirements to deployment | 6 | $30-150/feature | High |
 | Project Planning | Transform goals into actionable project plans | 7 | $20-80/session | Medium |
 | Content Creation | Research-backed, humanized content production | 7 | $15-60/article | Medium |
-| Business-in-a-Box | Comprehensive business planning with executable artifacts | 7 | $50-200/plan | High |
+| C-Suite | Comprehensive business planning with executable artifacts | 7 | $50-200/plan | High |
 | Research Deep Dive | Academic, market, or product research with configurable depth | 4-11 (modal) | $20-120/study | Variable |
 
 ---
@@ -236,9 +236,9 @@ Teams can chain together for complex workflows:
 
 | Source Team | Output | Target Team | Input |
 |------------|--------|------------|-------|
-| Business-in-a-Box | Product Roadmap (Linear) | Code Implementation | Feature requirements |
-| Business-in-a-Box | Marketing Plan | Content Creation | Content briefs |
-| Research Deep Dive | Market Analysis | Business-in-a-Box | Market context |
+| C-Suite | Product Roadmap (Linear) | Code Implementation | Feature requirements |
+| C-Suite | Marketing Plan | Content Creation | Content briefs |
+| Research Deep Dive | Market Analysis | C-Suite | Market context |
 | Project Planning | Sprint Plan | Code Implementation | Task assignments |
 | Research Deep Dive | Product Research | Project Planning | Feature priorities |
 

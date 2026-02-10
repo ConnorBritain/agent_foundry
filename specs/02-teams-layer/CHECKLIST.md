@@ -108,14 +108,14 @@
 
 ---
 
-## Business-in-a-Box Team
+## C-Suite Team
 ### Core Documentation
-- [ ] teams/business-in-a-box/README.md
-- [ ] teams/business-in-a-box/TEAM_SPEC.md
-- [ ] teams/business-in-a-box/MODEL_CONFIGS.md
-- [ ] teams/business-in-a-box/ORCHESTRATION.md
-- [ ] teams/business-in-a-box/cost-analysis.md
-- [ ] teams/business-in-a-box/deployment-guide.md
+- [ ] teams/c-suite/README.md
+- [ ] teams/c-suite/TEAM_SPEC.md
+- [ ] teams/c-suite/MODEL_CONFIGS.md
+- [ ] teams/c-suite/ORCHESTRATION.md
+- [ ] teams/c-suite/cost-analysis.md
+- [ ] teams/c-suite/deployment-guide.md
 
 ### Agent Definitions (7 agents)
 - [ ] agents/ceo-strategy/AGENTS.md

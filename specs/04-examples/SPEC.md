@@ -147,11 +147,11 @@ examples/
 
 ### 6. Business Planning Session (`business-planning-session.md`)
 
-**Purpose**: Show the Business-in-a-Box Team creating a comprehensive business plan from a single idea.
+**Purpose**: Show the C-Suite Team creating a comprehensive business plan from a single idea.
 
 **Content Structure**:
 - **Scenario**: User has a SaaS business idea and needs a complete plan
-- **Team template**: Business-in-a-Box (7 agents)
+- **Team template**: C-Suite (7 agents)
 - **Execution phases**:
   1. CEO facilitates vision alignment meeting
   2. Parallel specialist deep-dives (all 6 specialists work simultaneously):
@@ -199,7 +199,7 @@ The examples README should include:
 | Code Review | Single-agent | Intermediate | $1-3 | 10-20 min | None (standalone) |
 | Feature Implementation | Multi-agent | Intermediate | $10-30 | 30-60 min | Code Implementation |
 | Research-to-Content | Multi-agent | Advanced | $20-50 | 1-2 hr | Research + Content |
-| Business Planning | Multi-agent | Advanced | $30-80 | 1-3 hr | Business-in-a-Box |
+| Business Planning | Multi-agent | Advanced | $30-80 | 1-3 hr | C-Suite |
 ```
 
 ## Writing Guidelines for All Examples

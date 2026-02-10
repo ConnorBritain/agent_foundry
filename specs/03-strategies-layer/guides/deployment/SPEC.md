@@ -15,7 +15,7 @@ Provide practical guidance for deploying agent systems from local development th
 ### 1. Local Development Workflows
 
 #### Repository Setup
-- Directory structure conventions (following Agent Template Library layout)
+- Directory structure conventions (following Agent Foundry layout)
 - Initial configuration steps
 - Local dependency installation
 - Environment variable setup
@@ -193,7 +193,7 @@ cost-check:
 
 #### Onboarding
 - Getting started guide for new team members
-- Walkthrough of Agent Template Library structure
+- Walkthrough of Agent Foundry structure
 - Hands-on tutorial with simple single-agent workflow
 - Escalation path for issues and questions
 

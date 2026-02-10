@@ -24,7 +24,7 @@ Usage:
 Examples:
     python cost-estimator.py teams/code-implementation/
     python cost-estimator.py teams/research-deep-dive/ --compare-models
-    python cost-estimator.py teams/business-in-a-box/ --sensitivity --json
+    python cost-estimator.py teams/c-suite/ --sensitivity --json
 """
 
 import argparse
@@ -483,7 +483,7 @@ def _build_parser():
             "Examples:\n"
             "  %(prog)s teams/code-implementation/\n"
             "  %(prog)s teams/research-deep-dive/ --compare-models\n"
-            "  %(prog)s teams/business-in-a-box/ --sensitivity --json\n"
+            "  %(prog)s teams/c-suite/ --sensitivity --json\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

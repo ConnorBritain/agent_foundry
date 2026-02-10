@@ -4,7 +4,7 @@
 
 ## Purpose
 
-The Common Layer provides universal building blocks used across all agent implementations in the Agent Template Library. These are foundational templates, skills, personalities, and utilities that any team template or standalone agent can reference.
+The Common Layer provides universal building blocks used across all agent implementations in Agent Foundry. These are foundational templates, skills, personalities, and utilities that any team template or standalone agent can reference.
 
 ## Architecture Overview
 

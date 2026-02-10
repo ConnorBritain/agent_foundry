@@ -1,4 +1,4 @@
-# Agent Template Library - Master Progress Checklist
+# Agent Foundry - Master Progress Checklist
 
 ## Overall Status
 - **Started**: 2026-02-10
@@ -108,7 +108,7 @@ See: [specs/02-teams-layer/CHECKLIST.md](02-teams-layer/CHECKLIST.md)
 - [ ] Scenarios
 - [ ] Examples
 
-### Business-in-a-Box Team
+### C-Suite Team
 - [ ] README.md
 - [ ] TEAM_SPEC.md
 - [ ] MODEL_CONFIGS.md

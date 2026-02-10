@@ -1,4 +1,4 @@
-# Business-in-a-Box Team -- Full Specification
+# C-Suite Team -- Full Specification
 
 > **STATUS: STATIC REFERENCE** -- This file is never modified, only consulted.
 

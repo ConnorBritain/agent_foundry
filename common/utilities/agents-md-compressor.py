@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Documentation compressor for the Agent Template Library.
+Documentation compressor for Agent Foundry.
 
 Scans a directory of documentation files and generates a compressed,
 pipe-delimited index format suitable for inclusion in ``agents.md`` files.
