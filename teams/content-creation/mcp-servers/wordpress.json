@@ -1,0 +1,111 @@
+{
+  "name": "wordpress",
+  "description": "WordPress REST API for content publishing and management",
+  "transport": {
+    "type": "http",
+    "url": "${WORDPRESS_URL}/wp-json/wp/v2",
+    "headers": {
+      "Authorization": "Basic ${WORDPRESS_AUTH_BASE64}",
+      "Content-Type": "application/json"
+    }
+  },
+  "auth": {
+    "type": "basic",
+    "username": "${WORDPRESS_USERNAME}",
+    "password": "${WORDPRESS_APP_PASSWORD}"
+  },
+  "capabilities": {
+    "posts": {
+      "create": true,
+      "read": true,
+      "update": true,
+      "delete": false,
+      "publish": true,
+      "list_drafts": true
+    },
+    "media": {
+      "upload": true,
+      "read": true,
+      "delete": false
+    },
+    "categories": {
+      "read": true,
+      "create": true
+    },
+    "tags": {
+      "read": true,
+      "create": true
+    },
+    "pages": {
+      "create": false,
+      "read": true,
+      "update": false
+    }
+  },
+  "tools": [
+    {
+      "name": "create_post",
+      "description": "Create a new WordPress post in draft status",
+      "parameters": {
+        "title": "Post title",
+        "content": "Post content in HTML",
+        "status": "draft",
+        "categories": "Array of category IDs",
+        "tags": "Array of tag IDs",
+        "excerpt": "Custom excerpt text",
+        "featured_media": "Media ID for featured image"
+      }
+    },
+    {
+      "name": "update_post",
+      "description": "Update an existing WordPress post",
+      "parameters": {
+        "post_id": "ID of the post to update",
+        "title": "Updated title",
+        "content": "Updated content in HTML",
+        "status": "Post status (draft, publish, pending)",
+        "excerpt": "Updated excerpt"
+      }
+    },
+    {
+      "name": "upload_media",
+      "description": "Upload an image or file to the WordPress media library",
+      "parameters": {
+        "file_path": "Local path to the file",
+        "alt_text": "Alt text for the media item",
+        "caption": "Media caption"
+      }
+    },
+    {
+      "name": "list_categories",
+      "description": "List all available categories",
+      "parameters": {}
+    },
+    {
+      "name": "list_tags",
+      "description": "List all available tags",
+      "parameters": {
+        "search": "Search term to filter tags"
+      }
+    },
+    {
+      "name": "get_post",
+      "description": "Retrieve a specific post by ID",
+      "parameters": {
+        "post_id": "ID of the post to retrieve"
+      }
+    }
+  ],
+  "rate_limits": {
+    "requests_per_minute": 60,
+    "requests_per_hour": 1000
+  },
+  "used_by": ["format-specialist"],
+  "required_env_vars": [
+    "WORDPRESS_URL",
+    "WORDPRESS_USERNAME",
+    "WORDPRESS_APP_PASSWORD"
+  ],
+  "optional": true,
+  "notes": "WordPress MCP server is optional. If not configured, the team outputs content as local Markdown files. Posts are created in draft status by default -- the user must manually publish after review."
+}
