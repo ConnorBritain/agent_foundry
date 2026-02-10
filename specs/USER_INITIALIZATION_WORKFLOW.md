@@ -638,7 +638,7 @@ The Orchestrator tracks this automatically.
 python utilities/control-plane.py
 
 ╔══════════════════════════════════════════════════════════════╗
-║                    AGENT FOUNDRY CONTROL PLANE               ║
+║                       SFORZA CONTROL PLANE                   ║
 ║                    Project: YourStartup                       ║
 ╚══════════════════════════════════════════════════════════════╝
 
