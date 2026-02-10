@@ -8,7 +8,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FOUNDRY_ROOT="$(dirname "$SCRIPT_DIR")"
+SFORZA_ROOT="$(dirname "$SCRIPT_DIR")"
 
 # Colors
 RED='\033[0;31m'
@@ -63,9 +63,9 @@ if [[ -z "$PROJECT_DIR" ]]; then
 fi
 
 # Validate team exists
-TEAM_DIR="$FOUNDRY_ROOT/teams/$TEAM_NAME"
+TEAM_DIR="$SFORZA_ROOT/teams/$TEAM_NAME"
 if [[ ! -d "$TEAM_DIR" ]]; then
-    error "Team not found: $TEAM_NAME\nLook in $FOUNDRY_ROOT/teams/ for available teams."
+    error "Team not found: $TEAM_NAME\nLook in $SFORZA_ROOT/teams/ for available teams."
 fi
 
 # Validate project exists

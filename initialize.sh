@@ -11,7 +11,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FOUNDRY_ROOT="$SCRIPT_DIR"
+SFORZA_ROOT="$SCRIPT_DIR"
 
 # Colors
 RED='\033[0;31m'
@@ -97,7 +97,7 @@ prompt_project_name() {
         error "Invalid project name. Use letters, numbers, and hyphens."
     fi
 
-    PROJECT_DIR="$FOUNDRY_ROOT/projects/$PROJECT_SLUG"
+    PROJECT_DIR="$SFORZA_ROOT/projects/$PROJECT_SLUG"
 }
 
 create_workspace() {
@@ -126,7 +126,7 @@ create_workspace() {
   "project_name": "$PROJECT_NAME",
   "project_slug": "$PROJECT_SLUG",
   "initialized": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-  "foundry_root": "$FOUNDRY_ROOT",
+  "sforza_root": "$SFORZA_ROOT",
   "active_teams": [],
   "completed_teams": [],
   "dependencies": [],
@@ -180,8 +180,8 @@ DEPEOF
 
 generate_charter_template() {
     # Copy the charter template into the project for the orchestrator to fill in
-    if [[ -f "$FOUNDRY_ROOT/templates/PROJECT_CHARTER.md" ]]; then
-        cp "$FOUNDRY_ROOT/templates/PROJECT_CHARTER.md" "$PROJECT_DIR/PROJECT_CHARTER.md"
+    if [[ -f "$SFORZA_ROOT/templates/PROJECT_CHARTER.md" ]]; then
+        cp "$SFORZA_ROOT/templates/PROJECT_CHARTER.md" "$PROJECT_DIR/PROJECT_CHARTER.md"
         success "Charter template copied to project"
     else
         warn "Charter template not found at templates/PROJECT_CHARTER.md"
@@ -205,7 +205,7 @@ launch_orchestrator() {
         echo ""
         echo -e "  ${CYAN}---${NC}"
         echo "  You are the Sforza Orchestrator. Read ORCHESTRATOR.md at"
-        echo "  $FOUNDRY_ROOT/ORCHESTRATOR.md for your full instructions."
+        echo "  $SFORZA_ROOT/ORCHESTRATOR.md for your full instructions."
         echo "  The project workspace is at: $PROJECT_DIR"
         echo "  Begin the initialization interview."
         echo -e "  ${CYAN}---${NC}"
@@ -223,13 +223,13 @@ launch_orchestrator() {
     if [[ "$LAUNCH_NOW" == "n" || "$LAUNCH_NOW" == "N" ]]; then
         info "You can launch later with:"
         echo "  cd $PROJECT_DIR"
-        echo "  claude --print \"Read $FOUNDRY_ROOT/ORCHESTRATOR.md and begin the initialization interview for project at $PROJECT_DIR\""
+        echo "  claude --print \"Read $SFORZA_ROOT/ORCHESTRATOR.md and begin the initialization interview for project at $PROJECT_DIR\""
         return
     fi
 
     # Launch Claude Code with the Orchestrator prompt
     cd "$PROJECT_DIR"
-    claude --print "You are the Sforza Orchestrator. Read $FOUNDRY_ROOT/ORCHESTRATOR.md for your full system prompt and instructions. The project workspace is at: $PROJECT_DIR. The Sforza root (with all team templates) is at: $FOUNDRY_ROOT. Begin the initialization interview now." 2>/dev/null || {
+    claude --print "You are the Sforza Orchestrator. Read $SFORZA_ROOT/ORCHESTRATOR.md for your full system prompt and instructions. The project workspace is at: $PROJECT_DIR. The Sforza root (with all team templates) is at: $SFORZA_ROOT. Begin the initialization interview now." 2>/dev/null || {
         warn "Could not auto-launch Claude Code."
         echo ""
         echo "  Launch manually:"
@@ -237,7 +237,7 @@ launch_orchestrator() {
         echo "  claude"
         echo ""
         echo "  Then paste this prompt:"
-        echo "  Read $FOUNDRY_ROOT/ORCHESTRATOR.md and begin the initialization interview."
+        echo "  Read $SFORZA_ROOT/ORCHESTRATOR.md and begin the initialization interview."
     }
 }
 
@@ -254,7 +254,7 @@ echo ""
 echo -e "${BOLD}${GREEN}Setup complete.${NC}"
 echo ""
 echo "  Useful commands:"
-echo "    Monitor progress:  python3 $FOUNDRY_ROOT/common/utilities/control-plane.py --project $PROJECT_DIR"
+echo "    Monitor progress:  python3 $SFORZA_ROOT/common/utilities/control-plane.py --project $PROJECT_DIR"
 echo "    Launch a team:     ./launch-scripts/start-<team-name>.sh $PROJECT_DIR"
 echo "    View status:       cat $PROJECT_DIR/shared-workspace/project-status.json"
 echo ""

@@ -7,7 +7,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FOUNDRY_ROOT="$(dirname "$SCRIPT_DIR")"
+SFORZA_ROOT="$(dirname "$SCRIPT_DIR")"
 
 # Colors
 RED='\033[0;31m'
@@ -36,7 +36,7 @@ section "1. Script Validation"
 # ────────────────────────────────────────────────────────
 
 # Check all scripts are executable
-for script in "$FOUNDRY_ROOT"/launch-scripts/*.sh "$FOUNDRY_ROOT/initialize.sh"; do
+for script in "$SFORZA_ROOT"/launch-scripts/*.sh "$SFORZA_ROOT/initialize.sh"; do
     if [[ -x "$script" ]]; then
         pass "$(basename "$script") is executable"
     else
@@ -45,7 +45,7 @@ for script in "$FOUNDRY_ROOT"/launch-scripts/*.sh "$FOUNDRY_ROOT/initialize.sh";
 done
 
 # Check all scripts have proper shebangs
-for script in "$FOUNDRY_ROOT"/launch-scripts/*.sh "$FOUNDRY_ROOT/initialize.sh"; do
+for script in "$SFORZA_ROOT"/launch-scripts/*.sh "$SFORZA_ROOT/initialize.sh"; do
     first_line=$(head -1 "$script")
     if [[ "$first_line" == "#!/usr/bin/env bash" ]] || [[ "$first_line" == "#!/bin/bash" ]]; then
         pass "$(basename "$script") has valid shebang"
@@ -55,7 +55,7 @@ for script in "$FOUNDRY_ROOT"/launch-scripts/*.sh "$FOUNDRY_ROOT/initialize.sh";
 done
 
 # Check start-team.sh handles missing args
-output=$("$FOUNDRY_ROOT/launch-scripts/start-team.sh" 2>&1 || true)
+output=$("$SFORZA_ROOT/launch-scripts/start-team.sh" 2>&1 || true)
 if echo "$output" | grep -q "Usage:"; then
     pass "start-team.sh shows usage on missing args"
 else
@@ -63,7 +63,7 @@ else
 fi
 
 # Check start-team.sh rejects invalid team
-output=$("$FOUNDRY_ROOT/launch-scripts/start-team.sh" "nonexistent-team" "/tmp" 2>&1 || true)
+output=$("$SFORZA_ROOT/launch-scripts/start-team.sh" "nonexistent-team" "/tmp" 2>&1 || true)
 if echo "$output" | grep -qi "not found\|error"; then
     pass "start-team.sh rejects invalid team name"
 else
@@ -73,7 +73,7 @@ fi
 # Check team-specific scripts exist for all 8 teams
 EXPECTED_TEAMS=("c-suite" "code-implementation" "content-creation" "project-planning" "recruitment-hr" "research-deep-dive" "sales-marketing" "web-app-development")
 for team in "${EXPECTED_TEAMS[@]}"; do
-    if [[ -f "$FOUNDRY_ROOT/launch-scripts/start-${team}.sh" ]]; then
+    if [[ -f "$SFORZA_ROOT/launch-scripts/start-${team}.sh" ]]; then
         pass "start-${team}.sh exists"
     else
         fail "start-${team}.sh MISSING"
@@ -82,7 +82,7 @@ done
 
 # Shellcheck if available
 if command -v shellcheck &>/dev/null; then
-    for script in "$FOUNDRY_ROOT"/launch-scripts/*.sh "$FOUNDRY_ROOT/initialize.sh"; do
+    for script in "$SFORZA_ROOT"/launch-scripts/*.sh "$SFORZA_ROOT/initialize.sh"; do
         errors=$(shellcheck -S error "$script" 2>&1 || true)
         if [[ -z "$errors" ]]; then
             pass "shellcheck: $(basename "$script")"
@@ -106,7 +106,7 @@ echo '{}' > "$TEMP_PROJECT/shared-workspace/project-status.json"
 touch "$TEMP_PROJECT/PROJECT_CHARTER.md"
 
 # Test dry-run flag
-output=$("$FOUNDRY_ROOT/launch-scripts/start-team.sh" --dry-run "c-suite" "$TEMP_PROJECT" 2>&1 || true)
+output=$("$SFORZA_ROOT/launch-scripts/start-team.sh" --dry-run "c-suite" "$TEMP_PROJECT" 2>&1 || true)
 if echo "$output" | grep -qi "dry.run\|prompt\|DRY"; then
     pass "start-team.sh --dry-run outputs prompt without launching"
 else
@@ -123,7 +123,7 @@ section "3. Template Validation"
 CORE_DOCS=("README.md" "TEAM_SPEC.md" "MODEL_CONFIGS.md" "CONFIG.md" "ORCHESTRATION.md" "cost-analysis.md" "deployment-guide.md")
 
 for team in "${EXPECTED_TEAMS[@]}"; do
-    team_dir="$FOUNDRY_ROOT/teams/$team"
+    team_dir="$SFORZA_ROOT/teams/$team"
     team_errors=0
 
     # Check core docs
@@ -196,7 +196,7 @@ section "4. Common Layer Validation"
 # ────────────────────────────────────────────────────────
 
 # Personalities
-personality_count=$(find "$FOUNDRY_ROOT/common/personalities" -name "*.md" 2>/dev/null | wc -l)
+personality_count=$(find "$SFORZA_ROOT/common/personalities" -name "*.md" 2>/dev/null | wc -l)
 if [[ "$personality_count" -ge 5 ]]; then
     pass "common/personalities: $personality_count profiles"
 else
@@ -204,7 +204,7 @@ else
 fi
 
 # Agents-MD
-agentsmd_count=$(find "$FOUNDRY_ROOT/common/agents-md" -name "*.md" 2>/dev/null | wc -l)
+agentsmd_count=$(find "$SFORZA_ROOT/common/agents-md" -name "*.md" 2>/dev/null | wc -l)
 if [[ "$agentsmd_count" -ge 5 ]]; then
     pass "common/agents-md: $agentsmd_count reference docs"
 else
@@ -212,7 +212,7 @@ else
 fi
 
 # Skills
-skills_count=$(find "$FOUNDRY_ROOT/common/skills" -name "*.md" 2>/dev/null | wc -l)
+skills_count=$(find "$SFORZA_ROOT/common/skills" -name "*.md" 2>/dev/null | wc -l)
 if [[ "$skills_count" -ge 5 ]]; then
     pass "common/skills: $skills_count skills"
 else
@@ -220,7 +220,7 @@ else
 fi
 
 # Skills have YAML frontmatter
-for skill in "$FOUNDRY_ROOT"/common/skills/*.md; do
+for skill in "$SFORZA_ROOT"/common/skills/*.md; do
     if head -1 "$skill" | grep -q "^---"; then
         pass "$(basename "$skill"): has YAML frontmatter"
     else
@@ -230,7 +230,7 @@ done
 
 # Utilities
 for util in "control-plane.py" "cost-estimator.py" "status-updater.py"; do
-    if [[ -f "$FOUNDRY_ROOT/common/utilities/$util" ]]; then
+    if [[ -f "$SFORZA_ROOT/common/utilities/$util" ]]; then
         pass "common/utilities/$util exists"
     else
         warn "common/utilities/$util missing"
@@ -244,8 +244,8 @@ section "5. Strategies Layer Validation"
 EXPECTED_STRATEGIES=("harness-comparison.md" "model-selection-guide.md" "long-running-agents.md" "decision-framework.md" "deployment-guide.md" "optimization-guide.md" "quality-assurance.md")
 
 for strategy in "${EXPECTED_STRATEGIES[@]}"; do
-    if [[ -f "$FOUNDRY_ROOT/strategies/$strategy" ]]; then
-        size=$(wc -c < "$FOUNDRY_ROOT/strategies/$strategy")
+    if [[ -f "$SFORZA_ROOT/strategies/$strategy" ]]; then
+        size=$(wc -c < "$SFORZA_ROOT/strategies/$strategy")
         if [[ "$size" -gt 5000 ]]; then
             pass "strategies/$strategy ($size bytes)"
         else
@@ -262,7 +262,7 @@ section "6. Usability Layer Validation"
 
 # Core files
 for file in "initialize.sh" "ORCHESTRATOR.md" "ROADMAP.md" "README.md" "templates/PROJECT_CHARTER.md" "shared-workspace/README.md" "docs/USER_GUIDE.md"; do
-    if [[ -f "$FOUNDRY_ROOT/$file" ]]; then
+    if [[ -f "$SFORZA_ROOT/$file" ]]; then
         pass "$file exists"
     else
         fail "$file MISSING"
@@ -270,7 +270,7 @@ for file in "initialize.sh" "ORCHESTRATOR.md" "ROADMAP.md" "README.md" "template
 done
 
 # Launch scripts README
-if [[ -f "$FOUNDRY_ROOT/launch-scripts/README.md" ]]; then
+if [[ -f "$SFORZA_ROOT/launch-scripts/README.md" ]]; then
     pass "launch-scripts/README.md exists"
 else
     warn "launch-scripts/README.md missing"
@@ -292,7 +292,7 @@ if [[ -d "$SAMPLE_DIR" ]]; then
     done
 
     # Test that start-team.sh can parse the sample project
-    output=$("$FOUNDRY_ROOT/launch-scripts/start-team.sh" --dry-run "c-suite" "$SAMPLE_DIR" 2>&1 || true)
+    output=$("$SFORZA_ROOT/launch-scripts/start-team.sh" --dry-run "c-suite" "$SAMPLE_DIR" 2>&1 || true)
     if [[ $? -eq 0 ]] || echo "$output" | grep -qi "team\|prompt\|dry"; then
         pass "start-team.sh can read sample project"
     else

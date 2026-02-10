@@ -348,10 +348,10 @@ Create `<project-dir>/launch-scripts/` with a script per active team.
 #!/usr/bin/env bash
 set -euo pipefail
 
-FOUNDRY_ROOT="<foundry-root-absolute-path>"
+SFORZA_ROOT="<sforza-root-absolute-path>"
 PROJECT_DIR="<project-dir-absolute-path>"
 TEAM_ID="<team-id>"
-TEAM_DIR="$FOUNDRY_ROOT/teams/$TEAM_ID"
+TEAM_DIR="$SFORZA_ROOT/teams/$TEAM_ID"
 WORKSPACE="$PROJECT_DIR/${TEAM_ID}-workspace"
 
 echo "Launching $TEAM_ID team..."

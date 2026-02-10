@@ -111,7 +111,7 @@ sforza-daemon/
 ### Key Design Principles
 1. **Async-first** — All agent conversations run concurrently via asyncio tasks
 2. **State is truth** — SQLite is the single source of truth. If the daemon crashes, it resumes from DB state.
-3. **Sforza templates are external** — The daemon reads team templates from a configured `FOUNDRY_ROOT` path (the sforza repo clone). It does NOT embed templates.
+3. **Sforza templates are external** — The daemon reads team templates from a configured `SFORZA_ROOT` path (the sforza repo clone). It does NOT embed templates.
 4. **Anthropic API conversations are stateless** — Each API call sends the full conversation history. The daemon manages this history in SQLite.
 5. **Budget is a hard constraint** — The daemon NEVER exceeds budget without explicit user approval via the approve flow.
 
@@ -217,7 +217,7 @@ Key files to study:
 
 ### Phase 1: Core daemon (Week 1-2)
 1. Project scaffolding (pyproject.toml, src layout, basic tests)
-2. `config.py` — Settings from env vars / config file (ANTHROPIC_API_KEY, FOUNDRY_ROOT, DB_PATH, etc.)
+2. `config.py` — Settings from env vars / config file (ANTHROPIC_API_KEY, SFORZA_ROOT, DB_PATH, etc.)
 3. `state/database.py` + `state/models.py` — SQLite schema: projects, teams, agents, messages, decisions, cost_entries
 4. `agents/prompt_loader.py` — Load AGENTS.md from Sforza templates, inject charter context
 5. `agents/session.py` — Single agent conversation wrapper (send/receive with Anthropic API, persist to SQLite)
@@ -287,7 +287,7 @@ sforza export --format zip --output ./deliverables.zip
 
 ```bash
 ANTHROPIC_API_KEY=sk-ant-...          # Required
-FOUNDRY_ROOT=/path/to/sforza   # Path to cloned sforza repo
+SFORZA_ROOT=/path/to/sforza   # Path to cloned sforza repo
 AF_DB_PATH=~/.sforza/state.db  # SQLite database location
 AF_LOG_LEVEL=INFO                     # Logging level
 AF_API_PORT=8420                      # FastAPI server port

@@ -10,7 +10,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FOUNDRY_ROOT="$(dirname "$SCRIPT_DIR")"
+SFORZA_ROOT="$(dirname "$SCRIPT_DIR")"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -74,7 +74,7 @@ done
 
 # Add a monitoring window
 tmux new-window -t "$SESSION_NAME" -n "monitor" \
-    "echo 'Sforza Control Plane'; echo ''; python3 $FOUNDRY_ROOT/common/utilities/control-plane.py --project $PROJECT_DIR 2>/dev/null || (echo 'Control plane not available. Watching status file...'; echo ''; watch -n 5 cat $PROJECT_DIR/shared-workspace/project-status.json)"
+    "echo 'Sforza Control Plane'; echo ''; python3 $SFORZA_ROOT/common/utilities/control-plane.py --project $PROJECT_DIR 2>/dev/null || (echo 'Control plane not available. Watching status file...'; echo ''; watch -n 5 cat $PROJECT_DIR/shared-workspace/project-status.json)"
 
 echo ""
 success "All teams launched in tmux session: $SESSION_NAME"
