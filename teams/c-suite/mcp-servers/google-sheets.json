@@ -1,0 +1,40 @@
+{
+  "name": "google-sheets",
+  "description": "Google Sheets integration for financial modeling, budgeting, pipeline tracking, and data analysis. Enables agents to create and update live spreadsheets with formulas, charts, and linked sheets.",
+  "repository": "https://github.com/anthropics/mcp-google-sheets",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@anthropic/mcp-google-sheets"],
+    "env": {
+      "GOOGLE_SHEETS_API_KEY": "${GOOGLE_SHEETS_API_KEY}",
+      "GOOGLE_SHEETS_SPREADSHEET_ID": "${GOOGLE_SHEETS_SPREADSHEET_ID}"
+    }
+  },
+  "use_cases": [
+    "P&L projection with monthly Year 1 detail and quarterly Years 2-5",
+    "Cash flow analysis with runway calculation and breakeven date",
+    "Cap table modeling with pre-seed, seed, and Series A dilution scenarios",
+    "Unit economics dashboard (CAC, LTV, LTV:CAC ratio, payback period)",
+    "Hiring plan with fully-loaded costs by role and quarter",
+    "Sensitivity analysis with variable stress testing across scenarios",
+    "Sales pipeline model with conversion rates and monthly revenue forecast",
+    "Marketing budget allocation tracker with ROI per channel",
+    "Compensation calculator with OTE, base/variable splits, and commission tiers"
+  ],
+  "team_integration": "The CFO is the primary user, producing the complete financial model as a multi-sheet Google Sheets workbook. VP Sales uses it for pipeline models and compensation calculators. The CMO references it for marketing budget tracking. During Phase 6 artifact generation, the CFO creates the final formatted workbook with formulas, conditional formatting, charts, and a summary dashboard sheet. All financial figures in the business plan and pitch deck trace back to this single source of truth.",
+  "sheets_structure": {
+    "summary_dashboard": "Key metrics overview with charts -- MRR, runway, burn rate, LTV:CAC",
+    "p_and_l": "Revenue and expense projection with monthly Year 1, quarterly Years 2-5",
+    "cash_flow": "Monthly cash inflows and outflows with ending balance and runway",
+    "cap_table": "Founder equity, option pool, and funding round dilution scenarios",
+    "unit_economics": "CAC, LTV, payback period, contribution margin by segment",
+    "hiring_plan": "Role-by-role timeline with fully-loaded costs and cumulative headcount",
+    "sensitivity": "Key variable stress testing with best/base/worst case scenarios",
+    "pipeline_model": "Sales pipeline stages with conversion rates and revenue forecast",
+    "marketing_budget": "Channel-by-channel budget allocation with projected and actual ROI"
+  },
+  "permissions": {
+    "read": ["All agents during Phase 3-6 for cross-functional validation"],
+    "write": ["CFO (primary owner)", "VP Sales (pipeline and compensation sheets only)"]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "name": "arxiv",
+  "description": "arXiv API for academic paper search, metadata retrieval, and citation discovery",
+  "transport": {
+    "type": "http",
+    "url": "http://export.arxiv.org/api",
+    "headers": {
+      "Accept": "application/atom+xml"
+    }
+  },
+  "auth": {
+    "type": "none",
+    "note": "arXiv API is freely accessible. Optional API key for higher rate limits.",
+    "optional_key": "${ARXIV_API_KEY}"
+  },
+  "capabilities": {
+    "search": {
+      "by_title": true,
+      "by_author": true,
+      "by_abstract": true,
+      "by_category": true,
+      "by_id": true,
+      "boolean_operators": true,
+      "date_range_filter": true,
+      "max_results_per_query": 100
+    },
+    "metadata": {
+      "title": true,
+      "authors": true,
+      "abstract": true,
+      "categories": true,
+      "doi": true,
+      "journal_ref": true,
+      "published_date": true,
+      "updated_date": true,
+      "comment": true
+    },
+    "access": {
+      "pdf_link": true,
+      "html_link": true,
+      "source_link": true
+    }
+  },
+  "tools": [
+    {
+      "name": "search_papers",
+      "description": "Search for academic papers by keywords, authors, categories, or date range",
+      "parameters": {
+        "search_query": "Search query using arXiv query syntax (e.g., 'all:machine learning AND cat:cs.AI')",
+        "id_list": "Comma-separated list of arXiv IDs to retrieve specific papers",
+        "start": "Starting index for pagination (default 0)",
+        "max_results": "Maximum number of results to return (default 10, max 100)",
+        "sortBy": "Sort order: relevance, lastUpdatedDate, submittedDate",
+        "sortOrder": "Sort direction: ascending, descending"
+      }
+    },
+    {
+      "name": "get_paper",
+      "description": "Retrieve full metadata for a specific paper by arXiv ID",
+      "parameters": {
+        "arxiv_id": "The arXiv ID of the paper (e.g., '2301.07041')"
+      }
+    },
+    {
+      "name": "search_by_category",
+      "description": "Search papers within a specific arXiv category",
+      "parameters": {
+        "category": "arXiv category (e.g., cs.AI, cs.CL, stat.ML, q-bio.BM)",
+        "date_from": "Start date filter (YYYYMMDD)",
+        "date_to": "End date filter (YYYYMMDD)",
+        "max_results": "Maximum results to return"
+      }
+    }
+  ],
+  "rate_limits": {
+    "requests_per_3_seconds": 1,
+    "note": "arXiv enforces a 3-second delay between requests. The MCP server handles this automatically with request queuing."
+  },
+  "used_by": ["primary-researcher"],
+  "required_env_vars": [],
+  "optional": true,
+  "notes": "arXiv MCP server is recommended for academic mode research. It provides access to over 2 million pre-prints and published papers across physics, mathematics, computer science, biology, finance, and statistics. Rate limiting is strict -- plan for 20 queries per minute maximum. For medical research, supplement with PubMed."
+}

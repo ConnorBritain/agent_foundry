@@ -1,0 +1,77 @@
+{
+  "name": "brave-search",
+  "description": "Brave Search API for web source discovery, news search, and general research queries",
+  "transport": {
+    "type": "http",
+    "url": "https://api.search.brave.com/res/v1",
+    "headers": {
+      "X-Subscription-Token": "${SEARCH_API_KEY}",
+      "Accept": "application/json"
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "header": "X-Subscription-Token",
+    "key": "${SEARCH_API_KEY}"
+  },
+  "capabilities": {
+    "web_search": {
+      "search": true,
+      "filter_by_date": true,
+      "filter_by_domain": true,
+      "filter_by_language": true,
+      "max_results_per_query": 20
+    },
+    "news_search": {
+      "search": true,
+      "filter_by_date": true,
+      "filter_by_freshness": true
+    },
+    "summarization": {
+      "snippet_extraction": true,
+      "result_summary": true
+    }
+  },
+  "tools": [
+    {
+      "name": "web_search",
+      "description": "Search the web for sources, data, and information relevant to the research question",
+      "parameters": {
+        "query": "Search query string",
+        "count": "Number of results to return (max 20)",
+        "offset": "Pagination offset for additional results",
+        "freshness": "Filter by recency: pd (past day), pw (past week), pm (past month), py (past year)",
+        "search_lang": "Language filter (e.g., en, es, fr)",
+        "country": "Country filter for localized results",
+        "safesearch": "Safe search level: off, moderate, strict"
+      }
+    },
+    {
+      "name": "news_search",
+      "description": "Search recent news articles for current events, announcements, and market developments",
+      "parameters": {
+        "query": "News search query string",
+        "count": "Number of results to return (max 20)",
+        "freshness": "Filter by recency: pd (past day), pw (past week), pm (past month)"
+      }
+    },
+    {
+      "name": "suggest",
+      "description": "Get search query suggestions for expanding research scope",
+      "parameters": {
+        "query": "Partial query to get suggestions for"
+      }
+    }
+  ],
+  "rate_limits": {
+    "requests_per_second": 1,
+    "requests_per_month": 2000,
+    "note": "Free tier limit. Upgrade to Pro for higher limits."
+  },
+  "used_by": ["primary-researcher"],
+  "required_env_vars": [
+    "SEARCH_API_KEY"
+  ],
+  "optional": false,
+  "notes": "Brave Search is the primary source discovery tool for the research team. It is required for all research modes. The free tier provides 2,000 queries per month, which is sufficient for 40-80 research studies depending on depth. Deep research (sources.depth: deep) may consume 30-50 queries per study."
+}

@@ -1,0 +1,88 @@
+{
+  "name": "jira",
+  "description": "MCP server for Jira project management. Creates issues across types (epics, stories, tasks, bugs), sets priorities, links dependencies, assigns sprints, and manages boards. Used by the Integration Planner to export the full project plan into a Jira project.",
+  "repository": "https://github.com/anthropics/mcp-servers/tree/main/jira",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@anthropic/mcp-server-jira"],
+    "env": {
+      "JIRA_API_TOKEN": "${JIRA_API_TOKEN}",
+      "JIRA_DOMAIN": "${JIRA_DOMAIN}",
+      "JIRA_EMAIL": "${JIRA_EMAIL}"
+    }
+  },
+  "tools": [
+    {
+      "name": "create_issue",
+      "description": "Create a Jira issue with type (epic, story, task, bug, subtask), summary, description, priority, and story points",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "update_issue",
+      "description": "Update an existing issue's fields (status, assignee, priority, sprint, labels)",
+      "use_in_phase": [6, 7]
+    },
+    {
+      "name": "create_issue_link",
+      "description": "Link two issues with a dependency type (blocks / is-blocked-by / relates-to)",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "get_projects",
+      "description": "List available projects to verify the project key",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "get_sprints",
+      "description": "List sprints on a board to assign issues to the correct sprint",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "create_sprint",
+      "description": "Create a new sprint with start and end dates matching the Scheduler's calendar",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "move_to_sprint",
+      "description": "Move issues into a sprint for sprint planning",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "create_version",
+      "description": "Create a release version to track milestones and release targets",
+      "use_in_phase": [6]
+    }
+  ],
+  "use_cases": [
+    "Create epics for each workstream from the requirements document",
+    "Create stories and tasks under epics matching the Work Breakdown Structure",
+    "Set story points and priorities from the Task Decomposer and Resource Allocator outputs",
+    "Link issues with blocks/is-blocked-by relationships from the dependency graph",
+    "Create and populate sprints matching the Scheduler's calendar",
+    "Create release versions for major milestones",
+    "Apply labels for workstream, complexity, and skill requirements"
+  ],
+  "team_integration": "The Integration Planner activates this server in Phase 6 when CONFIG.local.md specifies task_management: jira. It creates the hierarchical issue structure (epics > stories > tasks) matching the WBS, links dependencies, populates sprints, and creates release versions for milestones. The Jira board type (scrum or kanban) is set per jira_settings.board_type in CONFIG.",
+  "required_env_vars": {
+    "JIRA_API_TOKEN": {
+      "description": "API token for Jira Cloud authentication",
+      "how_to_get": "id.atlassian.com > Security > API tokens > Create API token",
+      "required": true
+    },
+    "JIRA_DOMAIN": {
+      "description": "Your Jira Cloud domain",
+      "how_to_get": "The subdomain of your Jira instance (e.g., your-company.atlassian.net)",
+      "required": true
+    },
+    "JIRA_EMAIL": {
+      "description": "Email address associated with the Jira account",
+      "how_to_get": "The email used to log in to your Atlassian account",
+      "required": true
+    }
+  },
+  "estimated_token_overhead": {
+    "per_call": 300,
+    "typical_calls": "20-50",
+    "total": "6K-15K tokens"
+  }
+}

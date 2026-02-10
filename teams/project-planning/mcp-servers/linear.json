@@ -1,0 +1,75 @@
+{
+  "name": "linear",
+  "description": "MCP server for Linear issue tracking. Creates issues, sets priorities, links dependencies, assigns sprints, and applies labels. Used by the Integration Planner to export the full project plan into a Linear workspace.",
+  "repository": "https://github.com/anthropics/mcp-servers/tree/main/linear",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@anthropic/mcp-server-linear"],
+    "env": {
+      "LINEAR_API_KEY": "${LINEAR_API_KEY}"
+    }
+  },
+  "tools": [
+    {
+      "name": "create_issue",
+      "description": "Create a new issue in a Linear team with title, description, priority, estimate, and labels",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "update_issue",
+      "description": "Update an existing issue's fields (status, assignee, priority, sprint)",
+      "use_in_phase": [6, 7]
+    },
+    {
+      "name": "create_issue_relation",
+      "description": "Link two issues with a dependency relationship (blocks / blocked-by)",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "list_teams",
+      "description": "List available teams to find the correct team ID for issue creation",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "list_cycles",
+      "description": "List sprint cycles to assign issues to the correct sprint",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "create_label",
+      "description": "Create labels for workstream, type, and skill tagging",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "create_project",
+      "description": "Create a Linear project to group all issues under a single project view",
+      "use_in_phase": [6]
+    },
+    {
+      "name": "create_project_milestone",
+      "description": "Create milestones within the Linear project matching the Scheduler's milestone plan",
+      "use_in_phase": [6]
+    }
+  ],
+  "use_cases": [
+    "Export all tasks from the task list as Linear issues with estimates and acceptance criteria",
+    "Set issue priorities matching the Resource Allocator's prioritization output",
+    "Link issue dependencies using blocks/blocked-by relations from the dependency graph",
+    "Assign issues to sprint cycles matching the Scheduler's calendar",
+    "Apply labels for workstream, task type, complexity, and skill requirements",
+    "Create project milestones matching the Scheduler's milestone plan"
+  ],
+  "team_integration": "The Integration Planner activates this server in Phase 6 when CONFIG.local.md specifies task_management: linear. It reads the complete task list, dependency graph, priority rankings, and sprint assignments from previous phases, then creates the full Linear workspace in a single pass. After export, it verifies issue count matches the task list and all dependencies are linked.",
+  "required_env_vars": {
+    "LINEAR_API_KEY": {
+      "description": "API key for Linear authentication",
+      "how_to_get": "Linear app > Settings > API > Personal API keys > Create key",
+      "required": true
+    }
+  },
+  "estimated_token_overhead": {
+    "per_call": 200,
+    "typical_calls": "20-50",
+    "total": "4K-10K tokens"
+  }
+}

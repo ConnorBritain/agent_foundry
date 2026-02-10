@@ -1,0 +1,8 @@
+{
+  "name": "github",
+  "type": "rest",
+  "url": "https://api.github.com",
+  "capabilities": ["repos", "branches", "pulls", "reviews", "actions", "commits"],
+  "required_env": ["GITHUB_TOKEN"],
+  "documentation": "https://docs.github.com/en/rest"
+}
