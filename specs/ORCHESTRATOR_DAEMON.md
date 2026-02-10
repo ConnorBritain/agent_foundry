@@ -1,6 +1,6 @@
 # Orchestrator Daemon: Technical Specification & UX Design
 
-**Agent Foundry v2.0 Flagship Feature**
+**Sforza v2.0 Flagship Feature**
 
 ---
 
@@ -23,9 +23,9 @@
 
 A daemon is a program that runs in the background on your computer, like Dropbox, Spotify, or your antivirus software. You don't interact with it directly most of the time—it just quietly does its job. You interact with it through a separate interface (like a menu bar icon, web page, or app window).
 
-### For Agent Foundry
+### For Sforza
 
-The Agent Foundry Orchestrator Daemon would be a background service that:
+The Sforza Orchestrator Daemon would be a background service that:
 
 - **Manages all your AI agent sessions** - Keeps track of multiple teams working simultaneously
 - **Coordinates handoffs between teams** - When Business Planning finishes positioning, automatically notifies Content Creation
@@ -52,7 +52,7 @@ The Orchestrator Daemon is your AI project manager that never sleeps.
 
 **Monday morning:**
 ```
-Sarah opens Agent Foundry app
+Sarah opens Sforza app
 Sarah: "Build me a SaaS meal planning app"
 Orchestrator: "I'll need Business Planning, Research, and Content teams"
 Sarah: "Approved, budget is $500"
@@ -113,7 +113,7 @@ By Friday: Deployed app at mealplan-ai-staging.vercel.app
 
 ### Option 1: Desktop App (Electron) - **RECOMMENDED**
 
-This is the recommended approach for Agent Foundry v2.0.
+This is the recommended approach for Sforza v2.0.
 
 #### Why Desktop App?
 
@@ -216,7 +216,7 @@ This is the recommended approach for Agent Foundry v2.0.
 #### File Structure
 
 ```
-agent-foundry-desktop/
+sforza-desktop/
 ├── electron/                    # Electron main process
 │   ├── main.js                 # App entry point
 │   ├── ipc-handlers.js         # Communication with daemon
@@ -401,7 +401,7 @@ This is the most user-friendly option but requires significant infrastructure.
 **Cons:**
 - ⚠️ Requires hosting infrastructure ($2-5K/month)
 - ⚠️ Need to manage user data securely (GDPR, SOC2)
-- ⚠️ Users pay for both Agent Foundry subscription + Anthropic API usage
+- ⚠️ Users pay for both Sforza subscription + Anthropic API usage
 - ⚠️ Most complex to build ($80K MVP vs $50K desktop)
 - ⚠️ Ongoing operational costs
 
@@ -433,7 +433,7 @@ Enterprise: Custom pricing
 **Revenue model:**
 - Subscription fees ($29/mo/user)
 - API usage markup (20-30% on Anthropic costs)
-- Example: If user spends $100 on Anthropic API, Agent Foundry charges $120-130
+- Example: If user spends $100 on Anthropic API, Sforza charges $120-130
 
 ---
 
@@ -466,22 +466,22 @@ This walkthrough shows exactly what using the Desktop App version would feel lik
 
 ### Day 1: Installation & First Project
 
-#### 10:00 AM - Sarah Downloads Agent Foundry
+#### 10:00 AM - Sarah Downloads Sforza
 
 **On macOS:**
 ```bash
 # Sarah opens Terminal and runs:
-brew install agent-foundry
+brew install sforza
 
 # Output:
-==> Downloading agent-foundry-2.0.0-darwin-arm64.dmg
-==> Installing Agent Foundry...
-==> Application installed to /Applications/Agent Foundry.app
-✓ Agent Foundry installed successfully!
+==> Downloading sforza-2.0.0-darwin-arm64.dmg
+==> Installing Sforza...
+==> Application installed to /Applications/Sforza.app
+✓ Sforza installed successfully!
 
 # Or, Sarah visits agentfoundry.ai/download
 # Clicks "Download for Mac"
-# Double-clicks AgentFoundry.dmg
+# Double-clicks Sforza.dmg
 # Drags app to Applications folder
 ```
 
@@ -495,7 +495,7 @@ brew install agent-foundry
 ```
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
-│              🔨 Agent Foundry                        │
+│              🔨 Sforza                        │
 │                                                      │
 │         Where agent teams are forged                 │
 │                                                      │
@@ -519,7 +519,7 @@ brew install agent-foundry
 │  Step 1/3: Connect Anthropic                         │
 │  ───────────────────────────────────────────────────│
 │                                                      │
-│  Agent Foundry uses Claude to power your teams.     │
+│  Sforza uses Claude to power your teams.     │
 │  Choose how you want to connect:                    │
 │                                                      │
 │  ○ I have Claude Max 200 plan ($200/month)         │
@@ -548,10 +548,10 @@ brew install agent-foundry
 │  Step 2/3: Choose Project Location                   │
 │  ───────────────────────────────────────────────────│
 │                                                      │
-│  Where should Agent Foundry store your projects?    │
+│  Where should Sforza store your projects?    │
 │                                                      │
 │  Default location:                                   │
-│  📁 /Users/sarah/Documents/AgentFoundry              │
+│  📁 /Users/sarah/Documents/Sforza              │
 │                                                      │
 │  [Browse...] [Use Default]                          │
 │                                                      │
@@ -597,7 +597,7 @@ brew install agent-foundry
 │  ☑ Team completes phase                             │
 │  ☑ All deliverables ready                           │
 │                                                      │
-│                [← Back]     [Launch Agent Foundry →]│
+│                [← Back]     [Launch Sforza →]│
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -605,14 +605,14 @@ brew install agent-foundry
 
 #### 10:05 AM - First Project Creation
 
-**Sarah clicks "Launch Agent Foundry". App opens to main dashboard:**
+**Sarah clicks "Launch Sforza". App opens to main dashboard:**
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  Agent Foundry              sarah@example.com  [⚙️] [↓]│
+│  Sforza              sarah@example.com  [⚙️] [↓]│
 ├──────────────────────────────────────────────────────┤
 │                                                      │
-│              Welcome to Agent Foundry!               │
+│              Welcome to Sforza!               │
 │                                                      │
 │                         🔨                           │
 │                                                      │
@@ -769,24 +769,24 @@ brew install agent-foundry
 # Daemon spawns 3 agent workers
 orchestrator.spawn_agent(
     team="business-planning",
-    workspace="/Users/sarah/Documents/AgentFoundry/MealPlan-AI/business-planning/",
-    charter="/Users/sarah/Documents/AgentFoundry/MealPlan-AI/PROJECT_CHARTER.md",
+    workspace="/Users/sarah/Documents/Sforza/MealPlan-AI/business-planning/",
+    charter="/Users/sarah/Documents/Sforza/MealPlan-AI/PROJECT_CHARTER.md",
     budget_limit=200,
     priority="high"
 )
 
 orchestrator.spawn_agent(
     team="research",
-    workspace="/Users/sarah/Documents/AgentFoundry/MealPlan-AI/research/",
-    charter="/Users/sarah/Documents/AgentFoundry/MealPlan-AI/PROJECT_CHARTER.md",
+    workspace="/Users/sarah/Documents/Sforza/MealPlan-AI/research/",
+    charter="/Users/sarah/Documents/Sforza/MealPlan-AI/PROJECT_CHARTER.md",
     budget_limit=100,
     priority="high"
 )
 
 orchestrator.spawn_agent(
     team="content-creation",
-    workspace="/Users/sarah/Documents/AgentFoundry/MealPlan-AI/content/",
-    charter="/Users/sarah/Documents/AgentFoundry/MealPlan-AI/PROJECT_CHARTER.md",
+    workspace="/Users/sarah/Documents/Sforza/MealPlan-AI/content/",
+    charter="/Users/sarah/Documents/Sforza/MealPlan-AI/PROJECT_CHARTER.md",
     budget_limit=80,
     priority="medium",
     depends_on=["business-planning"]  # Waits for positioning
@@ -807,7 +807,7 @@ orchestrator.spawn_agent(
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  Agent Foundry           sarah@example.com   [⚙️] [↓] │
+│  Sforza           sarah@example.com   [⚙️] [↓] │
 ├──────┬───────────────────────────────────────────────┤
 │      │                                               │
 │ 🗂️    │  MealPlan AI              ●  3 teams active  │
@@ -855,7 +855,7 @@ orchestrator.spawn_agent(
 ─────────────────────────────────
 📱 iPhone Notification
 
-Agent Foundry
+Sforza
 
 Business Planning Team needs 
 your input
@@ -866,7 +866,7 @@ your input
 ─────────────────────────────────
 ```
 
-**Sarah taps notification. Agent Foundry app opens on her Mac (syncs via iCloud):**
+**Sarah taps notification. Sforza app opens on her Mac (syncs via iCloud):**
 
 ```
 ┌──────────────────────────────────────────────────────┐
@@ -1104,7 +1104,7 @@ agent_manager.send_message(
 ─────────────────────────────────
 📱 iPhone Notification
 
-Agent Foundry
+Sforza
 
 🎉 Phase 1 Complete!
 
@@ -1235,7 +1235,7 @@ Cost: $284.56
 ─────────────────────────────────
 📱 iPhone Notification
 
-Agent Foundry
+Sforza
 
 🚀 MVP Deployed!
 
@@ -1358,7 +1358,7 @@ Cost: $307.23
 **Bad UX (typical dev tools):**
 ```bash
 $ git clone https://github.com/...
-$ cd agent-foundry
+$ cd sforza
 $ npm install
 $ cp .env.example .env
 $ # Now edit .env with your API key...
@@ -1366,9 +1366,9 @@ $ npm run dev
 $ # Open http://localhost:3000
 ```
 
-**Good UX (Agent Foundry):**
+**Good UX (Sforza):**
 ```
-1. Download Agent Foundry app
+1. Download Sforza app
 2. Double-click to install
 3. Enter API key in setup wizard
 4. Click "Create Project"
@@ -1594,7 +1594,7 @@ Define:
 **For power users:**
 ```bash
 # Check status
-agent-foundry status
+sforza status
 
 # Output:
 MealPlan AI
@@ -1603,16 +1603,16 @@ MealPlan AI
   Content Creation: Phase 2/4 (78%)
 
 # View logs
-agent-foundry logs business-planning
+sforza logs business-planning
 
 # Approve decision
-agent-foundry approve decision-positioning-123
+sforza approve decision-positioning-123
 
 # Export deliverables
-agent-foundry export --format zip
+sforza export --format zip
 
 # Start team manually
-agent-foundry start web-app-development
+sforza start web-app-development
 ```
 
 ---
@@ -1920,7 +1920,7 @@ All of these are successful products built by small teams.
 
 **Small agencies running client projects**
 - Can charge clients $5-10K for "business setup"
-- Use Agent Foundry to deliver in days, not weeks
+- Use Sforza to deliver in days, not weeks
 - Still profitable at $1K internal cost
 - Can serve 5-10 clients/month
 
@@ -1956,7 +1956,7 @@ All of these are successful products built by small teams.
 
 **People with <$500 budget**
 - Free/cheap tools exist
-- Agent Foundry is premium
+- Sforza is premium
 - Better for them: Learn Claude Code manually
 
 ### What's the Killer Feature?
@@ -1968,7 +1968,7 @@ All of these are successful products built by small teams.
 - Learning to code yourself (months of learning)
 - Using low-code tools (limited functionality)
 
-**Agent Foundry makes it possible for $500-1K and 5-10 hours of your time.**
+**Sforza makes it possible for $500-1K and 5-10 hours of your time.**
 
 **That's the value proposition.**
 
@@ -1998,7 +1998,7 @@ All of these are successful products built by small teams.
 
 Plus usage-based revenue (20% markup on API costs):
 - If avg user spends $200/month on API
-- Agent Foundry charges $240/month ($40 markup)
+- Sforza charges $240/month ($40 markup)
 - Year 1: 500 × $40 = $20K/month = $240K/year
 - Year 2: 2,500 × $40 = $100K/month = $1.2M/year
 - Year 3: 10,000 × $40 = $400K/month = $4.8M/year
@@ -2051,7 +2051,7 @@ And it starts with the desktop app MVP: 3 months, $50K, and a small team.
 
 ## Conclusion
 
-The Orchestrator Daemon is the future of Agent Foundry. It transforms the project from "interesting template library" to "complete business-building platform."
+The Orchestrator Daemon is the future of Sforza. It transforms the project from "interesting template library" to "complete business-building platform."
 
 **v1.0 (current):** Manual orchestration, learn the patterns
 **v2.0 (daemon):** Automated orchestration, production-ready

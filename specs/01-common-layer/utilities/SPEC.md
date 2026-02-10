@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Provide 4 practical Python utility scripts that support development, validation, cost estimation, and compression for the entire Agent Foundry. These utilities are used both by template developers (building the library) and template consumers (deploying agent teams).
+Provide 4 practical Python utility scripts that support development, validation, cost estimation, and compression for the entire Sforza. These utilities are used both by template developers (building the library) and template consumers (deploying agent teams).
 
 ## Location
 
@@ -99,7 +99,7 @@ Calculate token usage for AGENTS.md files, skills, and team configurations. Supp
 ```
 usage: token-calculator.py [-h] {count,team,cost,compare} ...
 
-Token calculator for Agent Foundry
+Token calculator for Sforza
 
 positional arguments:
   {count,team,cost,compare}

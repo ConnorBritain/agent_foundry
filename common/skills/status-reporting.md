@@ -2,7 +2,7 @@
 skill_name: "status-reporting"
 version: "1.0.0"
 description: "Report progress, phase transitions, and blockers to the shared workspace"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "at the start of each phase"
   - "at the completion of each phase"

@@ -2,7 +2,7 @@
 skill_name: "file-management"
 version: "1.0.0"
 description: "Organize workspace files, manage artifacts, and maintain directory structure"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "when creating new deliverables"
   - "when organizing workspace output"

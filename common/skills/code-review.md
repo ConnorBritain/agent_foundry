@@ -2,7 +2,7 @@
 skill_name: "code-review"
 version: "1.0.0"
 description: "Performs structured code reviews with severity levels, categorized feedback, and actionable suggestions"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "when asked to review code or a pull request"
   - "when asked to check code quality"

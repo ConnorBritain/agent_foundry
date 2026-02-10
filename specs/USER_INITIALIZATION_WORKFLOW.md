@@ -1,4 +1,4 @@
-# Agent Foundry: User Initialization Workflow
+# Sforza: User Initialization Workflow
 
 ## The Vision: Business of One
 
@@ -20,8 +20,8 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/[org]/agent-foundry.git
-cd agent-foundry
+git clone https://github.com/[org]/sforza.git
+cd sforza
 
 # 2. Initialize your project
 ./initialize.sh
@@ -51,7 +51,7 @@ Choose your configuration:
 ```
 [ ] Claude Pro ($20/month)
     - Rate limited usage
-    - Best for: Learning Agent Foundry, small experiments
+    - Best for: Learning Sforza, small experiments
     - Typical capacity: 1-2 teams per day
     - Recommended approach: Serial execution (one team at a time)
     
@@ -254,7 +254,7 @@ The Orchestrator writes `PROJECT_CHARTER.md`:
 # Project Charter: [Your Business Name]
 
 **Generated**: 2026-02-09
-**Orchestrator**: Agent Foundry v1.0
+**Orchestrator**: Sforza v1.0
 
 ## Vision
 
@@ -518,7 +518,7 @@ Ready to launch? (yes/customize/ask-questions)
 
 ### The Reality: Multiple Claude Code Sessions
 
-**Agent Foundry v1.0 requires manual session management.** Here's how it works:
+**Sforza v1.0 requires manual session management.** Here's how it works:
 
 **You'll run multiple Claude Code sessions:**
 
@@ -677,7 +677,7 @@ Press 'r' to refresh | 'q' to quit | 'd' for details
 
 Could build a simple web interface:
 ```
-http://localhost:3000/agent-foundry
+http://localhost:3000/sforza
 
 Shows:
 - Real-time team status (pulls from project-status.json)
@@ -695,8 +695,8 @@ Shows:
 
 **Day 0: Setup**
 ```bash
-git clone https://github.com/agent-foundry/agent-foundry.git
-cd agent-foundry
+git clone https://github.com/sforza/sforza.git
+cd sforza
 ./initialize.sh
 ```
 
@@ -847,7 +847,7 @@ No guessing about progress.
 
 ---
 
-## What to Add to Agent Foundry
+## What to Add to Sforza
 
 ### New Files Needed
 
@@ -866,7 +866,7 @@ No guessing about progress.
 
 ---
 
-This is the **usability layer** that makes Agent Foundry accessible to actual founders, not just AI researchers. 
+This is the **usability layer** that makes Sforza accessible to actual founders, not just AI researchers. 
 
 Want me to add this to the integration prompt?
 
@@ -876,7 +876,7 @@ Want me to add this to the integration prompt?
 
 **Please create a `ROADMAP.md` file in the repository root with the following planned enhancements:**
 
-### Agent Foundry v1.0 (Current/Launch)
+### Sforza v1.0 (Current/Launch)
 - ✅ 8 complete team templates
 - ✅ Multi-team orchestration infrastructure  
 - ✅ Orchestrator agent for project initialization
@@ -886,7 +886,7 @@ Want me to add this to the integration prompt?
 - ✅ Shared workspace coordination protocols
 - ✅ Cost tracking and budget alerts
 
-### Agent Foundry v1.1 (Near-term Improvements)
+### Sforza v1.1 (Near-term Improvements)
 **Timeline: 1-2 months post-launch**
 
 1. **Enhanced Launch Scripts (CLI)**
@@ -919,7 +919,7 @@ Want me to add this to the integration prompt?
    - Video walkthroughs and documentation
    - Community template sharing
 
-### Agent Foundry v2.0 (Major Release)
+### Sforza v2.0 (Major Release)
 **Timeline: 3-6 months post-launch**
 
 #### 🎯 **Orchestration Daemon (PRIMARY GOAL)**
@@ -931,7 +931,7 @@ Want me to add this to the integration prompt?
 1. **Background Orchestration Service**
    ```bash
    # Start the daemon
-   agent-foundry-daemon start
+   sforza-daemon start
    
    # Daemon runs in background, manages all agent sessions
    # User interacts via CLI or web dashboard
@@ -945,7 +945,7 @@ Want me to add this to the integration prompt?
 
 3. **Web Dashboard (Control Plane 2.0)**
    ```
-   http://localhost:3000/agent-foundry
+   http://localhost:3000/sforza
    
    Features:
    - Real-time team status and progress
@@ -983,7 +983,7 @@ Want me to add this to the integration prompt?
 6. **API & Integrations**
    ```python
    # Python SDK
-   from agent_foundry import Orchestrator
+   from sforza import Orchestrator
    
    orch = Orchestrator(project="my-startup")
    
@@ -1040,16 +1040,16 @@ Want me to add this to the integration prompt?
 
 ```bash
 # Initialize project
-agent-foundry init "My SaaS Startup"
+sforza init "My SaaS Startup"
 
 # Answer Orchestrator questions
 # Orchestrator creates PROJECT_CHARTER.md
 
 # Start daemon
-agent-foundry start
+sforza start
 
 # Open dashboard
-agent-foundry dashboard
+sforza dashboard
 # Opens http://localhost:3000
 
 # Monitor all teams in real-time
@@ -1060,7 +1060,7 @@ agent-foundry dashboard
 # Deliverables appear in shared-workspace/artifacts/
 
 # Stop when complete
-agent-foundry stop
+sforza stop
 
 # All work preserved, ready for next session
 ```
@@ -1091,7 +1091,7 @@ agent-foundry stop
     - Linear/Jira sync (auto-create tasks from plans)
     - Google Drive export (all artifacts auto-synced)
 
-### Agent Foundry v3.0 (Future Vision)
+### Sforza v3.0 (Future Vision)
 **Timeline: 6-12 months post-launch**
 
 1. **Autonomous Business Operations**
@@ -1125,7 +1125,7 @@ agent-foundry stop
 
 1. **Orchestration Daemon** (v2.0 flagship)
    - Highest impact on usability
-   - Differentiates Agent Foundry from alternatives
+   - Differentiates Sforza from alternatives
    - Enables true "business of one" vision
 
 2. **Web Dashboard** (enables daemon)

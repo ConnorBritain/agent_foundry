@@ -2,7 +2,7 @@
 skill_name: "handoff"
 version: "1.0.0"
 description: "Transfer deliverables and context between teams via shared workspace"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "when a dependency is resolved for another team"
   - "when a team completes and the next team needs context"
@@ -13,7 +13,7 @@ triggers:
 
 ## Purpose
 
-Manage the transfer of deliverables, context, and decisions between Agent Foundry teams through the shared workspace coordination layer.
+Manage the transfer of deliverables, context, and decisions between Sforza teams through the shared workspace coordination layer.
 
 ## Handoff Types
 

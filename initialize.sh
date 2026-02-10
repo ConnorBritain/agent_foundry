@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Agent Foundry — Project Initialization Script
+# Sforza — Project Initialization Script
 # Usage: ./initialize.sh [project-name]
 #
 # This script:
@@ -204,7 +204,7 @@ launch_orchestrator() {
         echo "  3. Paste this prompt to start the Orchestrator:"
         echo ""
         echo -e "  ${CYAN}---${NC}"
-        echo "  You are the Agent Foundry Orchestrator. Read ORCHESTRATOR.md at"
+        echo "  You are the Sforza Orchestrator. Read ORCHESTRATOR.md at"
         echo "  $FOUNDRY_ROOT/ORCHESTRATOR.md for your full instructions."
         echo "  The project workspace is at: $PROJECT_DIR"
         echo "  Begin the initialization interview."
@@ -229,7 +229,7 @@ launch_orchestrator() {
 
     # Launch Claude Code with the Orchestrator prompt
     cd "$PROJECT_DIR"
-    claude --print "You are the Agent Foundry Orchestrator. Read $FOUNDRY_ROOT/ORCHESTRATOR.md for your full system prompt and instructions. The project workspace is at: $PROJECT_DIR. The foundry root (with all team templates) is at: $FOUNDRY_ROOT. Begin the initialization interview now." 2>/dev/null || {
+    claude --print "You are the Sforza Orchestrator. Read $FOUNDRY_ROOT/ORCHESTRATOR.md for your full system prompt and instructions. The project workspace is at: $PROJECT_DIR. The foundry root (with all team templates) is at: $FOUNDRY_ROOT. Begin the initialization interview now." 2>/dev/null || {
         warn "Could not auto-launch Claude Code."
         echo ""
         echo "  Launch manually:"

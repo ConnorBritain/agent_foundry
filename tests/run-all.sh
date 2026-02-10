@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Agent Foundry — Test Runner
+# Sforza — Test Runner
 # Usage: ./tests/run-all.sh
 #
 # Runs all validation tests and reports results.
@@ -28,7 +28,7 @@ warn() { WARN=$((WARN + 1)); echo -e "  ${YELLOW}WARN${NC} $1"; }
 section() { echo ""; echo -e "${BOLD}${CYAN}=== $1 ===${NC}"; }
 
 echo ""
-echo -e "${BOLD}${CYAN}Agent Foundry — Test Suite${NC}"
+echo -e "${BOLD}${CYAN}Sforza — Test Suite${NC}"
 echo ""
 
 # ────────────────────────────────────────────────────────

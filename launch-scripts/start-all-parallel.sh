@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Agent Foundry — Launch All Teams in Parallel (tmux)
+# Sforza — Launch All Teams in Parallel (tmux)
 # Requires: tmux, Claude Code CLI
 #
 # Usage: ./launch-scripts/start-all-parallel.sh <project-dir> [team1 team2 ...]
@@ -46,10 +46,10 @@ if [[ ${#TEAMS[@]} -eq 0 ]]; then
     TEAMS=("c-suite" "research-deep-dive" "content-creation")
 fi
 
-SESSION_NAME="agent-foundry"
+SESSION_NAME="sforza"
 
 echo ""
-echo -e "${BOLD}${CYAN}Agent Foundry — Parallel Launch${NC}"
+echo -e "${BOLD}${CYAN}Sforza — Parallel Launch${NC}"
 echo ""
 echo "  Project: $PROJECT_DIR"
 echo "  Teams:   ${TEAMS[*]}"
@@ -74,7 +74,7 @@ done
 
 # Add a monitoring window
 tmux new-window -t "$SESSION_NAME" -n "monitor" \
-    "echo 'Agent Foundry Control Plane'; echo ''; python3 $FOUNDRY_ROOT/common/utilities/control-plane.py --project $PROJECT_DIR 2>/dev/null || (echo 'Control plane not available. Watching status file...'; echo ''; watch -n 5 cat $PROJECT_DIR/shared-workspace/project-status.json)"
+    "echo 'Sforza Control Plane'; echo ''; python3 $FOUNDRY_ROOT/common/utilities/control-plane.py --project $PROJECT_DIR 2>/dev/null || (echo 'Control plane not available. Watching status file...'; echo ''; watch -n 5 cat $PROJECT_DIR/shared-workspace/project-status.json)"
 
 echo ""
 success "All teams launched in tmux session: $SESSION_NAME"

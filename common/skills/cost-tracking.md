@@ -2,7 +2,7 @@
 skill_name: "cost-tracking"
 version: "1.0.0"
 description: "Monitor and report token usage, API costs, and budget consumption"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "at the end of each phase"
   - "when budget threshold is approaching"

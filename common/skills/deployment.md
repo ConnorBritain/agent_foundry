@@ -2,7 +2,7 @@
 skill_name: "deployment"
 version: "1.0.0"
 description: "Deploy agent outputs to staging and production environments"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "when code is ready for deployment"
   - "when artifacts need to go to production"

@@ -1,4 +1,4 @@
-# Agent Foundry Daemon — Claude Code Kickoff Prompt
+# Sforza Daemon — Claude Code Kickoff Prompt
 
 Use this prompt to start a new Claude Code session for building the daemon.
 
@@ -7,11 +7,11 @@ Use this prompt to start a new Claude Code session for building the daemon.
 ## The Prompt
 
 ```
-You are building the **Agent Foundry Daemon** — the v2.0 flagship feature of the Agent Foundry project.
+You are building the **Sforza Daemon** — the v2.0 flagship feature of the Sforza project.
 
 ## Context
 
-Agent Foundry (https://github.com/ConnorBritain/agent_foundry) is an open-source operating system for building businesses with coordinated AI agent teams. v1.0 provides:
+Sforza (https://github.com/ConnorBritain/sforza) is an open-source operating system for building businesses with coordinated AI agent teams. v1.0 provides:
 
 - 8 team templates (c-suite, web-app-development, sales-marketing, recruitment-hr, content-creation, code-implementation, project-planning, research-deep-dive)
 - Each team is a set of agent system prompts (AGENTS.md files), orchestration plans, MCP configs, scenarios, and examples
@@ -24,7 +24,7 @@ Agent Foundry (https://github.com/ConnorBritain/agent_foundry) is an open-source
 
 ## What You're Building
 
-This repo (https://github.com/ConnorBritain/agent_foundry_daemon) is a **standalone Python daemon + CLI** that:
+This repo (https://github.com/ConnorBritain/sforza_daemon) is a **standalone Python daemon + CLI** that:
 
 1. **Manages multiple concurrent Anthropic API conversations** — one per agent team
 2. **Coordinates cross-team dependencies** — when Business Planning produces positioning, Content Creation automatically unblocks
@@ -35,11 +35,11 @@ This repo (https://github.com/ConnorBritain/agent_foundry_daemon) is a **standal
 ## Architecture
 
 ```
-agent-foundry-daemon/
+sforza-daemon/
 ├── pyproject.toml              # Package config (use uv/poetry)
 ├── README.md                   # Setup, usage, architecture
 ├── src/
-│   └── agent_foundry_daemon/
+│   └── sforza_daemon/
 │       ├── __init__.py
 │       ├── main.py             # Entry point, daemon lifecycle
 │       ├── config.py           # Settings, env vars, defaults
@@ -111,7 +111,7 @@ agent-foundry-daemon/
 ### Key Design Principles
 1. **Async-first** — All agent conversations run concurrently via asyncio tasks
 2. **State is truth** — SQLite is the single source of truth. If the daemon crashes, it resumes from DB state.
-3. **Agent Foundry templates are external** — The daemon reads team templates from a configured `FOUNDRY_ROOT` path (the agent_foundry repo clone). It does NOT embed templates.
+3. **Sforza templates are external** — The daemon reads team templates from a configured `FOUNDRY_ROOT` path (the sforza repo clone). It does NOT embed templates.
 4. **Anthropic API conversations are stateless** — Each API call sends the full conversation history. The daemon manages this history in SQLite.
 5. **Budget is a hard constraint** — The daemon NEVER exceeds budget without explicit user approval via the approve flow.
 
@@ -173,7 +173,7 @@ async def on_dependency_resolved(msg: DependencyResolved):
 ### User Approval Flow
 
 ```python
-# CLI: agent-foundry approve
+# CLI: sforza approve
 @app.command()
 def approve(decision_id: str, choice: str = None):
     """Approve a pending decision."""
@@ -198,15 +198,15 @@ async def approve_decision(decision_id: str, body: ApprovalBody):
 
 ## Reference Material
 
-Clone the Agent Foundry repo to understand the template format:
+Clone the Sforza repo to understand the template format:
 ```bash
-git clone https://github.com/ConnorBritain/agent_foundry.git ../agent_foundry
+git clone https://github.com/ConnorBritain/sforza.git ../sforza
 ```
 
 Key files to study:
 - `ORCHESTRATOR.md` — The orchestrator's full system prompt and interview flow. The daemon's `orchestrator/interview.py` should implement this programmatically.
 - `specs/ORCHESTRATOR_DAEMON.md` — The full vision doc for this daemon (architecture options, UX walkthrough, build plan, honest assessment)
-- `specs/USER_INITIALIZATION_WORKFLOW.md` — How users interact with Agent Foundry, the question flow, session management strategies
+- `specs/USER_INITIALIZATION_WORKFLOW.md` — How users interact with Sforza, the question flow, session management strategies
 - `teams/web-app-development/TEAM_SPEC.md` — Example team spec (how agents are defined, their roles, orchestration phases)
 - `teams/web-app-development/agents/coordinator/AGENTS.md` — Example agent system prompt
 - `teams/web-app-development/ORCHESTRATION.md` — Example multi-phase execution plan
@@ -241,54 +241,54 @@ Key files to study:
 15. `api/server.py` + `api/routes.py` — FastAPI REST endpoints
 16. `api/websocket.py` — Real-time status updates
 
-**Milestone: Full CLI workflow: `agent-foundry-daemon init "My SaaS"` → interview → `agent-foundry-daemon start` → teams run → `agent-foundry-daemon approve <id>` → deliverables appear.**
+**Milestone: Full CLI workflow: `sforza-daemon init "My SaaS"` → interview → `sforza-daemon start` → teams run → `sforza-daemon approve <id>` → deliverables appear.**
 
 ### Phase 4: Polish (Week 4)
 17. Error recovery (agent crashes, API timeouts, network issues)
 18. Checkpoint/resume (daemon restart picks up where it left off)
-19. Integration test with real Agent Foundry templates
+19. Integration test with real Sforza templates
 20. Documentation
 
 ## CLI Interface
 
 ```bash
 # Initialize a new project
-agent-foundry init "My SaaS Startup"
+sforza init "My SaaS Startup"
 # Runs the interview, creates PROJECT_CHARTER.md
 
 # Start the daemon (runs teams per charter)
-agent-foundry start
+sforza start
 # Daemon runs in background, teams execute
 
 # Check status
-agent-foundry status
+sforza status
 # Shows active teams, progress, cost, pending decisions
 
 # Approve a decision
-agent-foundry approve
+sforza approve
 # Interactive: shows pending decisions, lets you pick
 
-agent-foundry approve <decision-id> --choice "option_a"
+sforza approve <decision-id> --choice "option_a"
 # Non-interactive approval
 
 # View logs
-agent-foundry logs                    # All teams
-agent-foundry logs c-suite            # Specific team
-agent-foundry logs c-suite --tail 50  # Last 50 messages
+sforza logs                    # All teams
+sforza logs c-suite            # Specific team
+sforza logs c-suite --tail 50  # Last 50 messages
 
 # Stop the daemon
-agent-foundry stop
+sforza stop
 
 # Export deliverables
-agent-foundry export --format zip --output ./deliverables.zip
+sforza export --format zip --output ./deliverables.zip
 ```
 
 ## Environment Variables
 
 ```bash
 ANTHROPIC_API_KEY=sk-ant-...          # Required
-FOUNDRY_ROOT=/path/to/agent_foundry   # Path to cloned agent_foundry repo
-AF_DB_PATH=~/.agent-foundry/state.db  # SQLite database location
+FOUNDRY_ROOT=/path/to/sforza   # Path to cloned sforza repo
+AF_DB_PATH=~/.sforza/state.db  # SQLite database location
 AF_LOG_LEVEL=INFO                     # Logging level
 AF_API_PORT=8420                      # FastAPI server port
 AF_DEFAULT_MODEL=claude-sonnet-4-5-20250929  # Default model for agents

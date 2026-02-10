@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Agent Foundry — Template Validator
+# Sforza — Template Validator
 # Usage: ./tests/validate-templates.sh [team-name]
 #
 # Validates that team templates follow the gold standard structure.
@@ -151,7 +151,7 @@ validate_team() {
 # ── Main ──
 
 echo ""
-echo -e "${BOLD}Agent Foundry — Template Validator${NC}"
+echo -e "${BOLD}Sforza — Template Validator${NC}"
 
 if [[ -n "${1:-}" ]]; then
     # Validate specific team

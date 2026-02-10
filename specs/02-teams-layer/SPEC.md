@@ -6,7 +6,7 @@
 
 The Teams Layer provides pre-configured multi-agent team templates for specific use cases. Each team template is a complete, deployable package containing agent definitions, coordination patterns, cost projections, and execution guides.
 
-Teams are the primary unit of work in Agent Foundry. A user selects a team, configures it for their context, and deploys it to accomplish a complex goal that would be impractical for a single agent.
+Teams are the primary unit of work in Sforza. A user selects a team, configures it for their context, and deploys it to accomplish a complex goal that would be impractical for a single agent.
 
 ---
 

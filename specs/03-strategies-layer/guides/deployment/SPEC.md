@@ -15,7 +15,7 @@ Provide practical guidance for deploying agent systems from local development th
 ### 1. Local Development Workflows
 
 #### Repository Setup
-- Directory structure conventions (following Agent Foundry layout)
+- Directory structure conventions (following Sforza layout)
 - Initial configuration steps
 - Local dependency installation
 - Environment variable setup
@@ -193,7 +193,7 @@ cost-check:
 
 #### Onboarding
 - Getting started guide for new team members
-- Walkthrough of Agent Foundry structure
+- Walkthrough of Sforza structure
 - Hands-on tutorial with simple single-agent workflow
 - Escalation path for issues and questions
 

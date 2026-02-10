@@ -2,7 +2,7 @@
 skill_name: "quality-check"
 version: "1.0.0"
 description: "Validate output quality against acceptance criteria before publishing"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "before publishing any artifact"
   - "at phase completion"

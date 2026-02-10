@@ -2,7 +2,7 @@
 skill_name: "documentation"
 version: "1.0.0"
 description: "Generates structured documentation for APIs, READMEs, architecture decisions, and codebases"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "when asked to write or generate documentation"
   - "when asked to document an API endpoint or module"

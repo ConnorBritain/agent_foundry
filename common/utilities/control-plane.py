@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Agent Foundry Control Plane -- terminal dashboard for monitoring projects.
+Sforza Control Plane -- terminal dashboard for monitoring projects.
 
 Reads from shared-workspace/project-status.json and related files to display
 an auto-refreshing terminal dashboard with:
@@ -466,7 +466,7 @@ def render_rich(project_data, deps_md, comms, budget, agent_data, show_detail):
 
     # Header
     header_text = Text.from_markup(
-        f"[bold white]AGENT FOUNDRY CONTROL PLANE[/bold white]\n"
+        f"[bold white]SFORZA CONTROL PLANE[/bold white]\n"
         f"[dim]Project:[/dim] [bold cyan]{project_name}[/bold cyan]"
         f"    [dim]{now_str}[/dim]"
     )
@@ -784,7 +784,7 @@ def render_ansi(project_data, deps_md, comms, budget, agent_data, show_detail):
 
     # Header box
     print(_draw_box_top(w))
-    title = f"{_BOLD}{_WHITE}AGENT FOUNDRY CONTROL PLANE{_RESET}"
+    title = f"{_BOLD}{_WHITE}SFORZA CONTROL PLANE{_RESET}"
     print(_draw_box_mid(title, w))
     sub = f"{_DIM}Project:{_RESET} {_BOLD}{_CYAN}{project_name}{_RESET}    {_DIM}{now_str}{_RESET}"
     print(_draw_box_mid(sub, w))
@@ -1140,7 +1140,7 @@ def run_once(project_root):
 def _build_parser():
     parser = argparse.ArgumentParser(
         description=(
-            "Agent Foundry Control Plane -- terminal dashboard for monitoring "
+            "Sforza Control Plane -- terminal dashboard for monitoring "
             "multi-agent projects."
         ),
         epilog=(

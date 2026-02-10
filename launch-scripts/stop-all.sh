@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Agent Foundry — Stop All Running Teams
-# Kills the agent-foundry tmux session and all team sessions.
+# Sforza — Stop All Running Teams
+# Kills the sforza tmux session and all team sessions.
 
 set -euo pipefail
 
@@ -11,7 +11,7 @@ BOLD='\033[1m'
 NC='\033[0m'
 
 echo ""
-echo -e "${BOLD}Agent Foundry — Stopping All Teams${NC}"
+echo -e "${BOLD}Sforza — Stopping All Teams${NC}"
 echo ""
 
 if ! command -v tmux &>/dev/null; then
@@ -19,10 +19,10 @@ if ! command -v tmux &>/dev/null; then
     exit 0
 fi
 
-if tmux has-session -t "agent-foundry" 2>/dev/null; then
+if tmux has-session -t "sforza" 2>/dev/null; then
     # List active windows before killing
     echo "  Active sessions:"
-    tmux list-windows -t "agent-foundry" -F "    - #{window_name}" 2>/dev/null || true
+    tmux list-windows -t "sforza" -F "    - #{window_name}" 2>/dev/null || true
     echo ""
 
     read -rp "  Stop all teams? (Y/n): " CONFIRM
@@ -31,10 +31,10 @@ if tmux has-session -t "agent-foundry" 2>/dev/null; then
         exit 0
     fi
 
-    tmux kill-session -t "agent-foundry"
-    echo -e "${GREEN}[OK]${NC} All Agent Foundry sessions stopped."
+    tmux kill-session -t "sforza"
+    echo -e "${GREEN}[OK]${NC} All Sforza sessions stopped."
 else
-    echo "  No active Agent Foundry sessions found."
+    echo "  No active Sforza sessions found."
 fi
 
 echo ""

@@ -2,7 +2,7 @@
 skill_name: "checkpoint"
 version: "1.0.0"
 description: "Save session state for resume after interruption or context limit"
-author: "Agent Foundry"
+author: "Sforza"
 triggers:
   - "when approaching context window limit"
   - "when session is ending unexpectedly"
@@ -100,7 +100,7 @@ When starting a new session after interruption:
 ### Resume Prompt Template
 
 ```
-You are resuming work on the [TEAM_NAME] team for an Agent Foundry project.
+You are resuming work on the [TEAM_NAME] team for an Sforza project.
 
 Read the checkpoint at: [CHECKPOINT_PATH]
 Read the project charter at: [CHARTER_PATH]

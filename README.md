@@ -1,15 +1,15 @@
-# Agent Foundry
+# Sforza
 
 > From idea to deployed business—all agents.
 
-An open-source operating system for building and running businesses with coordinated AI agent teams. Whether you're a solo founder building a SaaS app or a small team launching a new venture, Agent Foundry provides battle-tested team templates that handle everything from business strategy to production deployment.
+An open-source operating system for building and running businesses with coordinated AI agent teams. Whether you're a solo founder building a SaaS app or a small team launching a new venture, Sforza provides battle-tested team templates that handle everything from business strategy to production deployment.
 
 ## Quick Start
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ConnorBritain/agent_foundry.git
-cd agent_foundry
+git clone https://github.com/ConnorBritain/sforza.git
+cd sforza
 
 # 2. Initialize your project (launches the Orchestrator interview)
 ./initialize.sh
@@ -27,9 +27,9 @@ python3 common/utilities/control-plane.py --project projects/your-project
 
 See [docs/USER_GUIDE.md](docs/USER_GUIDE.md) for the full walkthrough. See [ROADMAP.md](ROADMAP.md) for what's coming next.
 
-## What is Agent Foundry?
+## What is Sforza?
 
-Agent Foundry provides complete team templates for running every aspect of a business:
+Sforza provides complete team templates for running every aspect of a business:
 - **C-Suite**: Strategy, financials, pitch decks, org design
 - **Web App Development**: Full-stack SaaS with Supabase + Vercel + Stripe
 - **Sales & Marketing**: Go-to-market strategy, demand generation, sales enablement, pipeline management
@@ -50,7 +50,7 @@ Built on patterns from [StrongDM's groundbreaking work](https://simonwillison.ne
 ## Project Structure
 
 ```
-agent_foundry/
+sforza/
 ├── initialize.sh           # Project setup & Orchestrator launch
 ├── ORCHESTRATOR.md         # Orchestrator agent system prompt
 ├── ROADMAP.md              # v1.0 → v3.0 roadmap

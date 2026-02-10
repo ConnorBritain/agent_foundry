@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Agent Foundry — Generic Team Launch Script
+# Sforza — Generic Team Launch Script
 # Usage: ./launch-scripts/start-team.sh <team-name> <project-dir>
 #
 # This is the shared launcher used by all team-specific scripts.
@@ -81,7 +81,7 @@ mkdir -p "$TEAM_WORKSPACE"
 mkdir -p "$ARTIFACTS_DIR"
 
 echo ""
-echo -e "${BOLD}${CYAN}Agent Foundry — Launching Team${NC}"
+echo -e "${BOLD}${CYAN}Sforza — Launching Team${NC}"
 echo ""
 echo "  Team:      $TEAM_NAME"
 echo "  Template:  $TEAM_DIR"
@@ -94,7 +94,7 @@ echo ""
 CHARTER_PATH="$PROJECT_DIR/PROJECT_CHARTER.md"
 STATUS_PATH="$PROJECT_DIR/shared-workspace/project-status.json"
 
-PROMPT="You are launching the ${TEAM_NAME} team for an Agent Foundry project.
+PROMPT="You are launching the ${TEAM_NAME} team for an Sforza project.
 
 TEAM TEMPLATE LOCATION: ${TEAM_DIR}
 Read the following files to understand your team:

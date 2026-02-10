@@ -1,6 +1,6 @@
 # Launch Scripts
 
-Scripts for starting Agent Foundry team sessions.
+Scripts for starting Sforza team sessions.
 
 ## Quick Start
 
