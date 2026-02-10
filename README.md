@@ -4,6 +4,29 @@
 
 An open-source operating system for building and running businesses with coordinated AI agent teams. Whether you're a solo founder building a SaaS app or a small team launching a new venture, Agent Foundry provides battle-tested team templates that handle everything from business strategy to production deployment.
 
+## Quick Start
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/ConnorBritain/agent_foundry.git
+cd agent_foundry
+
+# 2. Initialize your project (launches the Orchestrator interview)
+./initialize.sh
+
+# 3. Launch teams (after Orchestrator creates your plan)
+./launch-scripts/start-c-suite.sh projects/your-project
+
+# 4. Monitor progress
+python3 common/utilities/control-plane.py --project projects/your-project
+```
+
+**What you need:** Claude Max Plan ($200/month recommended) or API key, Python 3, Git
+
+**What you get:** A complete business built by coordinated agent teams — from strategy to deployed product.
+
+See [docs/USER_GUIDE.md](docs/USER_GUIDE.md) for the full walkthrough. See [ROADMAP.md](ROADMAP.md) for what's coming next.
+
 ## What is Agent Foundry?
 
 Agent Foundry provides complete team templates for running every aspect of a business:
@@ -27,13 +50,19 @@ Built on patterns from [StrongDM's groundbreaking work](https://simonwillison.ne
 ## Project Structure
 
 ```
-agent-foundry/
-├── common/              # Reusable building blocks
-│   ├── personalities/   # 10+ agent personalities
-│   ├── agents-md/       # Framework & domain knowledge templates
-│   ├── skills/          # Universal workflow skills
-│   └── utilities/       # File locks, status tracking, cost estimation
-├── teams/               # 8 complete team templates
+agent_foundry/
+├── initialize.sh           # Project setup & Orchestrator launch
+├── ORCHESTRATOR.md         # Orchestrator agent system prompt
+├── ROADMAP.md              # v1.0 → v3.0 roadmap
+├── templates/              # Project charter template
+├── launch-scripts/         # Team launch scripts (one per team)
+├── docs/                   # User guide & documentation
+├── common/                 # Reusable building blocks
+│   ├── personalities/      # 10+ agent personalities
+│   ├── agents-md/          # Framework & domain knowledge templates
+│   ├── skills/             # Universal workflow skills
+│   └── utilities/          # File locks, status tracking, cost estimation, control plane
+├── teams/                  # 8 complete team templates
 │   ├── c-suite/
 │   ├── code-implementation/
 │   ├── content-creation/
@@ -42,9 +71,10 @@ agent-foundry/
 │   ├── research-deep-dive/
 │   ├── sales-marketing/
 │   └── web-app-development/
-├── strategies/          # Decision frameworks & guides
-├── shared-workspace/    # Multi-team coordination
-└── specs/              # Detailed specifications
+├── strategies/             # Decision frameworks & guides
+├── shared-workspace/       # Multi-team coordination
+├── projects/               # Your project workspaces (created by initialize.sh)
+└── specs/                  # Detailed specifications
 ```
 
 ## Team Templates

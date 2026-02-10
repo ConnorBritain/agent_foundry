@@ -34,3 +34,10 @@ build/
 # Team-specific logs
 *-workspace/logs/
 *-workspace/temp/
+
+# Project workspaces (runtime data created by initialize.sh)
+/projects/
+!projects/.gitkeep
+
+# Launch prompt artifacts
+.launch-prompt.md
