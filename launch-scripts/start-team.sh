@@ -24,8 +24,17 @@ success() { echo -e "${GREEN}[OK]${NC} $1"; }
 warn()    { echo -e "${YELLOW}[WARN]${NC} $1"; }
 error()   { echo -e "${RED}[ERROR]${NC} $1"; exit 1; }
 
-TEAM_NAME="${1:-}"
-PROJECT_DIR="${2:-}"
+DRY_RUN=false
+ARGS=()
+for arg in "$@"; do
+    case "$arg" in
+        --dry-run) DRY_RUN=true ;;
+        *) ARGS+=("$arg") ;;
+    esac
+done
+
+TEAM_NAME="${ARGS[0]:-}"
+PROJECT_DIR="${ARGS[1]:-}"
 
 if [[ -z "$TEAM_NAME" ]]; then
     echo "Usage: $0 <team-name> <project-dir>"
@@ -112,6 +121,20 @@ INSTRUCTIONS:
 7. Track costs and report at phase completion
 
 Begin by reading TEAM_SPEC.md and PROJECT_CHARTER.md, then introduce yourself and start Phase 1."
+
+# Dry-run mode: print prompt and exit
+if [[ "$DRY_RUN" == "true" ]]; then
+    echo -e "${BOLD}${YELLOW}[DRY RUN]${NC} Would launch with this prompt:"
+    echo ""
+    echo "────────────────────────────────────"
+    echo "$PROMPT"
+    echo "────────────────────────────────────"
+    echo ""
+    echo -e "${YELLOW}[DRY RUN]${NC} No Claude Code session launched."
+    echo "$PROMPT" > "$TEAM_WORKSPACE/.launch-prompt.md"
+    success "Prompt saved to $TEAM_WORKSPACE/.launch-prompt.md"
+    exit 0
+fi
 
 # Check if Claude Code CLI is available
 if command -v claude &>/dev/null; then
