@@ -71,7 +71,7 @@ agent_foundry/
 │   ├── research-deep-dive/
 │   ├── sales-marketing/
 │   └── web-app-development/
-├── strategies/             # Decision frameworks & guides
+├── strategies/             # 7 decision guides (model selection, deployment, optimization, etc.)
 ├── shared-workspace/       # Multi-team coordination
 ├── projects/               # Your project workspaces (created by initialize.sh)
 └── specs/                  # Detailed specifications
@@ -107,7 +107,7 @@ Research-backed content with AI pattern removal and brand voice matching. Includ
 ### Code Implementation
 Feature development from requirements to deployment with parallel implementation, code review, testing, and documentation.
 
-**Agents**: 6 | **Cost**: ~$40-60 | **Duration**: ~1 hour
+**Agents**: 7 | **Cost**: ~$40-60 | **Duration**: ~1 hour
 
 ### Project Planning
 Transform goals into actionable plans across multiple frameworks (SAFe, Agile, Scrum, even family chores). Integrates with Linear, Google Calendar, Jira.
@@ -115,9 +115,9 @@ Transform goals into actionable plans across multiple frameworks (SAFe, Agile, S
 **Agents**: 7 | **Cost**: ~$50-80 | **Duration**: ~1.5 hours
 
 ### Research (Deep Dive)
-Comprehensive research with configurable modes (academic, market, competitive, product). Progressive disclosure of specialized agents.
+Comprehensive research with configurable modes (academic, market, competitive, product). Includes lead researcher, source analysis, data synthesis, fact-checking, and report writing.
 
-**Agents**: 4-12 | **Cost**: ~$80-120 | **Duration**: ~2-3 hours
+**Agents**: 9 | **Cost**: ~$80-120 | **Duration**: ~2-3 hours
 
 ## Multi-Team Projects
 
