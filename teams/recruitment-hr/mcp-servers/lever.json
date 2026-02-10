@@ -1,0 +1,8 @@
+{
+  "name": "lever",
+  "type": "rest",
+  "url": "https://api.lever.co/v1",
+  "capabilities": ["postings", "candidates", "applications", "interviews", "offers"],
+  "required_env": ["LEVER_API_KEY"],
+  "documentation": "https://hire.lever.co/developer/documentation"
+}

@@ -1,7 +1,36 @@
-# Nothing ignored yet - we want specs/ tracked!
-# Orchestration files will be ignored after setup
+# Agent runtime state (don't commit, changes constantly)
+/shared-state/agent-status.json
+/shared-state/locks/
+/shared-state/communication.md
+/logs/active/
+*.log
+
+# Environment and secrets
+.env
+.env.local
+**/.mcp-secrets/
 
 # OS and IDE
 .DS_Store
 .vscode/
 .idea/
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Multi-team workspace (team-specific working directories)
+/*-workspace/
+!shared-workspace/
+
+# Team-specific logs
+*-workspace/logs/
+*-workspace/temp/

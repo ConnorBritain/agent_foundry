@@ -1,4 +1,10 @@
-# Claude Code: Agent Workflow Architecture Guidance
+# Agent Foundry
+
+> Where agent teams are forged
+
+An open-source operating system for building and running businesses with coordinated
+AI agent teams. From high-level strategy to deployed applications—all orchestrated
+by specialized agents working in parallel.
 
 ## Context & Research Foundation
 
@@ -37,7 +43,7 @@ I've researched agent steering approaches including Skills, AGENTS.md, and MCP p
 
 ## My Project Goals
 
-I need a comprehensive **Agent Template Library** organized into three categorical levels:
+I need a comprehensive **Agent Foundry** organized into three categorical levels:
 
 ### 1. **Common** - Universal Building Blocks
 Foundational templates used across all agent implementations:
@@ -227,7 +233,7 @@ specs/
 │   ├── code-implementation/SPEC.md
 │   ├── project-planning/SPEC.md
 │   ├── content-creation/SPEC.md
-│   ├── business-in-a-box/SPEC.md
+│   ├── c-suite/SPEC.md
 │   └── research-deep-dive/SPEC.md
 ├── 03-strategies-layer/
 │   ├── SPEC.md
@@ -436,7 +442,7 @@ if __name__ == "__main__":
 
 ---
 
-Please help me build this comprehensive Agent Template Library:
+Please help me build this comprehensive Agent Foundry:
 
 ### 1. Common Templates Layer
 
@@ -492,7 +498,7 @@ Map of personalities to team templates and roles:
 - **Humanizer**: Custom personality (see team-specific notes)
 - **Critic**: Skeptical Critic + Detail Perfectionist
 
-## Business-in-a-Box Team
+## C-Suite Team
 - **CEO**: Strategic Visionary + Diplomatic Facilitator
 - **CFO**: Cautious Analyst + Skeptical Critic
 - **CMO**: Enthusiastic Supporter + Customer Champion
@@ -1278,7 +1284,7 @@ metadata:
 
 ---
 
-#### **Team Template #4: Business-in-a-Box Team**
+#### **Team Template #4: C-Suite Team**
 
 **Use case**: Comprehensive business planning with executable artifacts—the team doesn't just plan, it creates documents that other agent teams (and tools like Claude Cowork) can act upon.
 
@@ -1819,7 +1825,7 @@ Testing, validation, and quality measurement for agent workflows. This should in
 
 ## Deliverable Format
 
-The complete Agent Template Library should be organized as:
+The complete Agent Foundry should be organized as:
 
 ```
 agent-templates/
@@ -1922,7 +1928,7 @@ agent-templates/
 │   │   │   ├── fact-checker/
 │   │   │   └── formatter/
 │   │   └── examples/
-│   ├── business-in-a-box/
+│   ├── c-suite/
 │   │   ├── README.md
 │   │   ├── TEAM_SPEC.md
 │   │   ├── MODEL_CONFIGS.md
@@ -2001,7 +2007,7 @@ Each component should be:
 
 ## Success Criteria
 
-The Agent Template Library should enable users to:
+The Agent Foundry should enable users to:
 
 ### Common Layer Success
 - [ ] Copy any AGENTS.md template and adapt to their framework in <15 minutes

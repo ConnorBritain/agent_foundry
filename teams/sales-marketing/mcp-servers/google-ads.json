@@ -1,0 +1,8 @@
+{
+  "name": "google-ads",
+  "type": "rest",
+  "url": "https://googleads.googleapis.com",
+  "capabilities": ["campaigns", "ad-groups", "keywords", "performance"],
+  "required_env": ["GOOGLE_ADS_DEVELOPER_TOKEN", "GOOGLE_ADS_CUSTOMER_ID"],
+  "documentation": "https://developers.google.com/google-ads/api"
+}

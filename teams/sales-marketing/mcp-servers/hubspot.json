@@ -1,0 +1,8 @@
+{
+  "name": "hubspot",
+  "type": "rest",
+  "url": "https://api.hubspot.com",
+  "capabilities": ["contacts", "deals", "companies", "campaigns", "analytics"],
+  "required_env": ["HUBSPOT_API_KEY"],
+  "documentation": "https://developers.hubspot.com/docs/api"
+}
