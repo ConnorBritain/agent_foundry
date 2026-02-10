@@ -1,0 +1,23 @@
+{
+  "name": "filesystem",
+  "description": "Provides secure read and write access to the local filesystem. Enables agents to read project files, write source code, create configuration files, and analyze directory structures within a sandboxed project directory.",
+  "repository": "https://github.com/modelcontextprotocol/servers",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "${PROJECT_ROOT}"],
+    "env": {}
+  },
+  "use_cases": [
+    "Read existing source files to understand codebase conventions and patterns",
+    "Write new source files for feature implementation",
+    "Modify existing files during implementation and bug fix workflows",
+    "Read package.json, tsconfig.json, and other config files for project context",
+    "Create test files in the project test directory",
+    "Write Dockerfiles, CI configurations, and deployment manifests",
+    "Read directory structures to understand project organization",
+    "Create and update documentation files",
+    "Write migration files for database schema changes",
+    "Read .env.example files for environment variable discovery"
+  ],
+  "team_integration": "The Filesystem MCP server provides all agents with sandboxed access to the project directory. The Coordinator reads the project structure during Phase 1 planning. Implementation Specialists read existing code for convention matching and write new source files. The Code Reviewer reads source files for context beyond the diff. The Test Engineer writes test files and fixtures. The DevOps Specialist writes Dockerfiles, CI configs, and infrastructure templates. Access is restricted to the PROJECT_ROOT directory to prevent unintended modifications outside the project."
+}

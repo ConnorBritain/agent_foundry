@@ -1,131 +1,93 @@
-# MCP Server Configuration
+# MCP Servers for Code Implementation Team
 
-This directory contains the Model Context Protocol (MCP) server configurations used by the Code Implementation Team agents to interact with external services.
+This directory contains Model Context Protocol (MCP) server configurations used by the Code Implementation Team. MCP servers extend agent capabilities by providing structured access to external tools and services.
 
 ---
 
 ## Overview
 
-Each JSON file defines an MCP server connection that agents use to perform operations against external APIs. The configurations specify the service endpoint, capabilities, and required credentials.
+| MCP Server | Config File | Purpose | Required |
+|-----------|-------------|---------|----------|
+| GitHub | `github.json` | Repository access, branch management, PR creation, issue tracking | Yes |
+| Filesystem | `filesystem.json` | Local file read/write, directory traversal, project structure analysis | Yes |
 
-| MCP Server | Config File | Used By | Purpose |
-|-----------|-------------|---------|---------|
-| GitHub | `github.json` | Coordinator, Code Reviewer | Branch management, PR creation, code review integration |
+## How MCP Servers Are Used
 
-### Optional MCP Servers
+Each agent in the team connects to MCP servers based on its responsibilities:
 
-| MCP Server | Config File | Used By | Purpose |
-|-----------|-------------|---------|---------|
-| Linear | `linear.json` | Coordinator | Task tracking, sprint management |
-| Jira | `jira.json` | Coordinator | Enterprise task tracking |
-| Sentry | `sentry.json` | Coordinator, Test Engineer | Error tracking context for bug fixes |
+| Agent | GitHub | Filesystem |
+|-------|--------|-----------|
+| Coordinator / Planner | Read issues, create PRs, manage branches | Read project structure, analyze codebase conventions |
+| Implementation Specialist A | Push commits, create branches | Read and write source files |
+| Implementation Specialist B | Push commits, create branches | Read and write source files |
+| Code Reviewer | Read diffs, post review comments | Read source files for context |
+| Test Engineer | Read test results from CI | Read source files, write test files |
+| DevOps Specialist | Configure CI workflows, manage secrets | Read and write config files, Dockerfiles, CI manifests |
 
----
+## Setup
 
-## Prerequisites
+### 1. Install MCP Server Dependencies
 
-### GitHub (Required)
+MCP servers are installed automatically via `npx` when the team runs. No pre-installation is needed. Ensure you have Node.js >= 20.0.0 installed.
 
-**Required environment variables:**
-- `GITHUB_TOKEN` -- Personal access token with repository and workflow permissions
+### 2. Configure Environment Variables
 
-**How to obtain:**
-
-1. Go to [github.com/settings/tokens](https://github.com/settings/tokens)
-2. Click **Generate new token (classic)**
-3. Name it (e.g., "code-implementation-team")
-4. Select the following scopes:
-   - `repo` -- Full control of private repositories
-   - `workflow` -- Update GitHub Actions workflows
-5. Click **Generate token**
-6. Copy the token (starts with `ghp_`) -- this is your `GITHUB_TOKEN`
-
-Alternatively, use a **fine-grained personal access token** with permissions:
-- Repository access: your specific repository
-- Permissions: Contents (read/write), Pull requests (read/write), Actions (read/write)
-
-**What this MCP server provides:**
-- **Branches:** Create, list, and delete branches
-- **Commits:** Read commit history, compare branches
-- **Pull Requests:** Create PRs, add reviewers, merge
-- **Code Review:** Post review comments, approve/request changes
-- **Actions:** Trigger workflows, inspect run results
-
-**CLI verification:**
+Each MCP server requires specific environment variables. Set these before running the team:
 
 ```bash
-gh --version
-gh auth status
+# GitHub MCP Server (required)
+export GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
----
+### 3. Verify Configuration
 
-### Linear (Optional)
+The Coordinator validates MCP server connectivity at the start of Phase 1. If a required server is unreachable, the run will pause with a clear error message.
 
-**Required environment variables:**
-- `LINEAR_API_KEY` -- Personal API key
+## Configuration Format
 
-**How to obtain:**
+Each MCP server config file follows this structure:
 
-1. Go to Settings > API > Personal API keys in Linear
-2. Create a new key with appropriate scopes
-3. Copy the key
-
-**What this MCP server provides:**
-- **Issues:** Create and update issues from task decomposition
-- **Projects:** Link work to projects and milestones
-- **Labels:** Categorize tasks by type and priority
-
----
-
-### Sentry (Optional)
-
-**Required environment variables:**
-- `SENTRY_AUTH_TOKEN` -- Authentication token with project:read scope
-
-**How to obtain:**
-
-1. Go to Settings > Auth Tokens in Sentry
-2. Create a new token with `project:read` scope
-3. Copy the token
-
-**What this MCP server provides:**
-- **Error context:** Recent errors and stack traces for bug fix workflows
-- **Release tracking:** Link feature branches to Sentry releases
-
----
-
-## Environment Variable Summary
-
-```bash
-# Required
-export GITHUB_TOKEN=""              # ghp_... (personal access token)
-
-# Optional
-export LINEAR_API_KEY=""            # Linear personal API key
-export JIRA_TOKEN=""                # Jira API token
-export SENTRY_AUTH_TOKEN=""         # Sentry auth token
+```json
+{
+  "name": "server-name",
+  "description": "What the server provides",
+  "repository": "https://github.com/org/repo",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@package/name"],
+    "env": {
+      "API_KEY": "${ENV_VAR_NAME}"
+    }
+  },
+  "use_cases": [
+    "Specific capability 1",
+    "Specific capability 2"
+  ],
+  "team_integration": "How this team uses the server"
+}
 ```
 
----
+## Adding a New MCP Server
 
-## Verification Checklist
+1. Create a new JSON config file in this directory (e.g., `sentry.json`)
+2. Follow the configuration format above
+3. Add the server to the `mcp_servers` section in `CONFIG.md`
+4. Set the required environment variables
+5. Document the server in the table at the top of this file
 
-Run this checklist before starting the team:
+## Troubleshooting
 
-```bash
-# GitHub (required)
-echo "GitHub token: ${GITHUB_TOKEN:+SET}"
-gh auth status 2>/dev/null && echo "GitHub CLI: OK" || echo "GitHub CLI: FAILED"
-```
+**Server fails to start:**
+- Verify Node.js >= 20.0.0 is installed: `node --version`
+- Check that the `npx` command is available: `npx --version`
+- Ensure the environment variable is set: `echo $GITHUB_TOKEN`
 
-GitHub should show "SET" and "OK". Optional services only need verification if enabled in CONFIG.
+**Authentication errors:**
+- Verify your GitHub token has `repo` and `workflow` scopes
+- Regenerate the token if it has expired
+- Run `gh auth status` to confirm GitHub CLI authentication
 
----
-
-## Security Notes
-
-- **Never commit credentials** to the repository. Set environment variables in your shell or `.env.local` (gitignored).
-- **Scope tokens narrowly.** Give each token only the permissions it needs.
-- **Rotate tokens regularly.** If a token is exposed, revoke it immediately and generate a new one.
-- **Use fine-grained tokens when possible.** Limit access to specific repositories rather than all repositories.
+**Timeout errors:**
+- MCP servers have a 30-second connection timeout
+- Check network connectivity to the service (github.com)
+- If behind a proxy, configure `HTTPS_PROXY` environment variable

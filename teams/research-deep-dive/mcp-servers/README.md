@@ -1,51 +1,56 @@
 # MCP Server Configuration
 
-This directory contains the Model Context Protocol (MCP) server configurations used by the Research Deep Dive Team agents to interact with external services.
+This directory contains the Model Context Protocol (MCP) server configurations used by the Research Deep Dive Team agents to interact with external data sources and search services.
 
 ---
 
 ## Overview
 
-Each JSON file defines an MCP server connection that agents use to perform operations against external APIs. The configurations specify the service endpoint, capabilities, and required credentials.
+Each JSON file defines an MCP server connection that agents use to discover and retrieve research sources. The configurations specify the service endpoint, capabilities, and required credentials.
 
 | MCP Server | Config File | Used By | Purpose |
 |-----------|-------------|---------|---------|
-| Brave Search | `brave-search.json` | Primary Researcher | Web source discovery, general research queries |
-| arXiv | `arxiv.json` | Primary Researcher | Academic paper search and metadata retrieval |
+| Brave Search | `brave-search.json` | Source Analyst, Fact Checker | Web source discovery, company research, news search |
+| arXiv | `arxiv.json` | Source Analyst | Academic paper search, pre-print discovery, citation metadata |
 
-Additional MCP servers may be configured at the platform level (not team-specific) for services shared across teams, such as Google Docs, Notion, and Crunchbase.
+Additional search capabilities (PubMed, Google Scholar, patent databases) can be configured at the platform level. The two servers above are the team-specific configurations that cover the majority of research use cases.
 
 ---
 
 ## Prerequisites
 
-Before running the team, you must have accounts and API credentials for each service you plan to use. The Brave Search server is required for all research modes. The arXiv server is recommended for academic mode.
+Before running the team, you must have accounts and API credentials for each search service you plan to use. The Brave Search MCP server is required for all research modes. The arXiv MCP server is optional but strongly recommended for academic and technology research.
 
 ### Brave Search (Required)
 
 **Required environment variables:**
-- `SEARCH_API_KEY` -- Brave Search API key for web source discovery
+- `BRAVE_API_KEY` -- Brave Search API key for web and news search
 
 **How to obtain:**
 
 1. Go to https://brave.com/search/api/
-2. Sign up for a free account (2,000 queries/month on the free tier)
-3. Navigate to the API section and copy your API key
+2. Sign up for a free account (2,000 queries/month) or paid plan
+3. Navigate to the API dashboard and copy your API key
 
 **What this MCP server provides:**
-- **Web search:** Full-text web search with result snippets
-- **News search:** Recent news articles on the research topic
-- **Filtering:** Date range filtering, domain filtering, language filtering
-- **Summarization:** Search result summaries for quick relevance assessment
+- **Web search:** General source discovery across the open web
+- **News search:** Recent news articles and press coverage
+- **Structured results:** Titles, URLs, descriptions, and publication dates
+- **Filtering:** Date range, domain inclusion/exclusion, result type
+
+**Rate limits:**
+- Free tier: 1 query/second, 2,000 queries/month
+- Paid tiers: Higher limits based on plan
 
 **Verification:**
 
 ```bash
 # Verify the API key is set
-echo "Search API: ${SEARCH_API_KEY:+SET}"
+echo "Brave API: ${BRAVE_API_KEY:+SET}"
 
 # Test a search query
-curl -s -H "X-Subscription-Token: $SEARCH_API_KEY" \
+curl -s -H "Accept: application/json" \
+  -H "X-Subscription-Token: ${BRAVE_API_KEY}" \
   "https://api.search.brave.com/res/v1/web/search?q=test&count=1" | head -c 200
 ```
 
@@ -54,26 +59,26 @@ curl -s -H "X-Subscription-Token: $SEARCH_API_KEY" \
 ### arXiv (Optional, Recommended for Academic Mode)
 
 **Required environment variables:**
-- None required for basic access (arXiv API is freely accessible)
+- None required (arXiv API is freely accessible)
 - `ARXIV_API_KEY` -- Optional, for higher rate limits
 
 **How to obtain:**
 
 1. arXiv API is freely accessible at https://export.arxiv.org/api/
 2. For rate limit increases, see https://info.arxiv.org/help/api/index.html
-3. Rate limit: 1 request per 3 seconds (default)
+3. Default rate limit: 1 request per 3 seconds (unauthenticated)
 
 **What this MCP server provides:**
-- **Paper search:** Search by title, author, abstract, category, date range
-- **Metadata retrieval:** Title, authors, abstract, categories, DOI, publication date
+- **Paper search:** Search across all arXiv categories (cs, stat, econ, physics, math, etc.)
+- **Metadata retrieval:** Title, authors, abstract, categories, submission date, DOI
 - **Full text access:** Links to PDF and HTML versions of papers
-- **Citation data:** Related papers and references
+- **Citation data:** Reference lists and related papers
 
 **Verification:**
 
 ```bash
-# Test an arXiv API query (no key required)
-curl -s "http://export.arxiv.org/api/query?search_query=all:machine+learning&max_results=1" | head -c 500
+# Test arXiv API access (no key required)
+curl -s "http://export.arxiv.org/api/query?search_query=all:AI+agents&max_results=1" | head -c 500
 ```
 
 ---
@@ -87,20 +92,14 @@ These servers are not included in this directory but can be configured at the pl
 |--------|---------|----------------|
 | PubMed / NCBI | Medical and biomedical literature | Platform-level |
 | Google Scholar | Broad academic search | Platform-level |
-| Zotero / Mendeley | Citation management | Platform-level |
+| Semantic Scholar | Citation graph and influence metrics | Platform-level |
 
 ### Market/Competitive Mode
 | Server | Purpose | Config Location |
 |--------|---------|----------------|
-| Crunchbase | Company data and funding | Platform-level |
-| SimilarWeb | Web traffic analysis | Platform-level |
-| Google Sheets | Market sizing models | Platform-level |
-
-### Product/UX Mode
-| Server | Purpose | Config Location |
-|--------|---------|----------------|
-| Google Analytics | User behavior data | Platform-level |
-| Linear | Feature backlog management | Platform-level |
+| Crunchbase | Company data and funding intelligence | Platform-level |
+| SimilarWeb | Web traffic and competitive benchmarking | Platform-level |
+| Google Sheets | Market sizing model output | Platform-level |
 
 ### Output Delivery (All Modes)
 | Server | Purpose | Config Location |
@@ -110,26 +109,38 @@ These servers are not included in this directory but can be configured at the pl
 
 ---
 
+## Agent-Server Mapping
+
+| Agent | Brave Search | arXiv | Notes |
+|-------|-------------|-------|-------|
+| Lead Researcher | Indirect | Indirect | Directs Source Analyst, does not search directly |
+| Source Analyst | Primary | Academic mode | Executes all search queries for the team |
+| Data Synthesizer | -- | -- | Works with collected findings only |
+| Fact Checker | Verification | -- | Verifies source URLs and checks claim accuracy |
+| Report Writer | -- | -- | Works with synthesis outputs only |
+
+---
+
 ## Environment Variable Summary
 
 Set all required environment variables before running the team:
 
 ```bash
-# Required - Web Search (for Primary Researcher)
-export SEARCH_API_KEY=""                    # Brave Search API key
+# Required - Web Search (for Source Analyst)
+export BRAVE_API_KEY=""                    # Brave Search API key
 
 # Optional - Academic Mode
-export ARXIV_API_KEY=""                     # arXiv API key (for higher rate limits)
-export PUBMED_API_KEY=""                    # PubMed API key
-export ZOTERO_API_KEY=""                    # Zotero citation management
+export ARXIV_API_KEY=""                    # arXiv API key (for higher rate limits)
+export PUBMED_API_KEY=""                   # PubMed/NCBI access
+export SEMANTIC_SCHOLAR_API_KEY=""         # Semantic Scholar API
 
 # Optional - Market Mode
-export CRUNCHBASE_API_KEY=""               # Crunchbase company data
-export SIMILARWEB_API_KEY=""               # SimilarWeb traffic analysis
+export CRUNCHBASE_API_KEY=""              # Crunchbase company data
+export SIMILARWEB_API_KEY=""             # SimilarWeb traffic analysis
 
 # Optional - Output Delivery
-export GOOGLE_DOCS_CREDENTIALS=""          # Path to Google service account JSON
-export NOTION_API_KEY=""                   # Notion integration token
+export GOOGLE_DOCS_CREDENTIALS=""         # Path to Google service account JSON
+export NOTION_API_KEY=""                  # Notion integration token
 ```
 
 ---
@@ -140,10 +151,10 @@ Run this checklist before starting the team:
 
 ```bash
 # 1. Web Search (Required)
-echo "Search API: ${SEARCH_API_KEY:+SET}"
+echo "Brave API: ${BRAVE_API_KEY:+SET}"
 
 # 2. arXiv (Optional, recommended for academic mode)
-echo "arXiv: ${ARXIV_API_KEY:+SET (or using default rate limit)}"
+echo "arXiv: ${ARXIV_API_KEY:-FREE_TIER}"
 
 # 3. Market Mode Services (Optional)
 echo "Crunchbase: ${CRUNCHBASE_API_KEY:+SET}"
@@ -154,14 +165,15 @@ echo "Google Docs: ${GOOGLE_DOCS_CREDENTIALS:+SET}"
 echo "Notion: ${NOTION_API_KEY:+SET}"
 ```
 
-The Search API key must show "SET". All other keys are optional depending on your research mode.
+The Brave API key must show "SET". All other keys are optional depending on your research mode and depth requirements.
 
 ---
 
 ## Security Notes
 
 - **Never commit credentials** to the repository. All environment variables should be set in your shell, `.env.local` (gitignored), or a secrets manager.
-- **Respect rate limits.** The arXiv API is rate-limited to 1 request per 3 seconds. The MCP server handles this automatically, but excessive parallel requests may be throttled.
+- **Respect rate limits.** The arXiv API is rate-limited to 1 request per 3 seconds. The MCP server handles this automatically.
+- **Monitor API usage.** Brave Search free tier has a 2,000 query/month limit. A typical research study uses 50-200 queries depending on depth.
 - **Scope API keys narrowly.** Use read-only API keys where available. The research team does not need write access to external services.
 - **Rotate API keys regularly.** If a key is exposed, revoke it immediately and generate a new one.
-- **Monitor usage.** Brave Search free tier is limited to 2,000 queries/month. Deep research can consume significant quota.
+- **arXiv terms of use.** arXiv API access is subject to their terms of service. Do not bulk-download papers or exceed rate limits.

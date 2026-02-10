@@ -1,8 +1,24 @@
 {
   "name": "github",
-  "type": "rest",
-  "url": "https://api.github.com",
-  "capabilities": ["repos", "branches", "pulls", "reviews", "actions", "commits"],
-  "required_env": ["GITHUB_TOKEN"],
-  "documentation": "https://docs.github.com/en/rest"
+  "description": "Provides access to GitHub repositories, branches, pull requests, issues, and CI status. Enables agents to read code, push commits, create branches, open PRs, and monitor workflow runs.",
+  "repository": "https://github.com/modelcontextprotocol/servers",
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-github"],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+    }
+  },
+  "use_cases": [
+    "Clone and read repository contents for codebase analysis",
+    "Create feature branches for implementation specialists",
+    "Push commits with structured commit messages",
+    "Create pull requests with description, test results, and coverage reports",
+    "Read and post review comments on pull requests",
+    "List and read issues for bug fix workflows",
+    "Check CI workflow run status and retrieve logs",
+    "Manage branch protection and merge operations",
+    "Read repository file tree for project structure analysis"
+  ],
+  "team_integration": "The GitHub MCP server is the primary integration point for the Code Implementation Team. The Coordinator uses it to create feature branches and PRs. Implementation Specialists push commits to their respective branches. The Code Reviewer reads diffs and posts structured review findings. The Test Engineer checks CI status after test runs. All agents use it to read the existing codebase for convention analysis."
 }
