@@ -205,7 +205,20 @@ See: [specs/04-examples/CHECKLIST.md](04-examples/CHECKLIST.md)
 - [ ] research-to-content-pipeline.md
 - [ ] business-planning-session.md
 
-## Phase 5: Top-Level Documentation
+## Phase 5: Business Model & Strategy
+See: [specs/05-business-model/](05-business-model/)
+
+Migrated from Conductor decompilation research (juba workspace). Hormozi framework applied to Sforza.
+
+- [x] README.md
+- [x] POSITIONING.md (core loop, BYOLLM, moat, platform analogy)
+- [x] AVATARS.md (6 personas with budget/retention drivers)
+- [x] LESSONS.md (24 strategic lessons from Hormozi, OpenClaw, Conductor)
+- [x] MONEY-MODEL.md (Attraction → Upsell → Downsell → Continuity)
+- [x] PRICING.md (Free/Pro/Enterprise tiers, 4-week billing, unit economics)
+- [x] V1-STRATEGY.md (master strategy doc tying all specs together)
+
+## Phase 6: Top-Level Documentation
 - [ ] README.md (library overview and quick start)
 - [ ] common/README.md
 - [ ] teams/README.md
@@ -225,5 +238,6 @@ See: [specs/04-examples/CHECKLIST.md](04-examples/CHECKLIST.md)
 | Team Templates (8 teams) | ~96 | 0 | ~96 |
 | Strategy Guides | 8 | 0 | 8 |
 | Examples | 6 | 0 | 6 |
+| Business Model & Strategy | 7 | 7 | 0 |
 | Top-Level Docs | 5 | 0 | 5 |
-| **TOTAL** | **~160** | **11** | **~149** |
+| **TOTAL** | **~167** | **18** | **~149** | |
